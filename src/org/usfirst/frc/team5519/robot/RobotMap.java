@@ -33,6 +33,6 @@ public class RobotMap {
 	public static Talon rearRightMotor;
 	public static Victor armMotor;
 	
-	//Hi guys
+	
 	
 	
