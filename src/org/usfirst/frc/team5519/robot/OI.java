@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5519.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
@@ -36,4 +37,8 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	
+	// CY 1/12/2017
+	public static final int kDriveStickPort = 0;	// Default is 0, change if necessary.
+	public static Joystick driveStick;
 }
