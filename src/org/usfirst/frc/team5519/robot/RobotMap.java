@@ -21,6 +21,7 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	
 	// CY 1/12/2017
+	// DRIVE SYSTEMS FULL POWER!!!
 	// More motor ports will be added design continues.
 	public static final int kFrontLeftMotorPort = 1;	// Need to find and set correct port
 	public static final int kRearLeftMotorPort = 2;		// Need to find and set correct port
@@ -28,11 +29,20 @@ public class RobotMap {
 	public static final int kRearRightMotorPort = 4;	// Need to find and set correct port
 	public static final int kArmMotorPort = 5;			// Need to find and set correct port
 	
+	// Motor types are subject to change.
 	public static Talon frontLeftMotor;
 	public static Talon rearLeftMotor;
 	public static Talon frontRightMotor;
 	public static Talon rearRightMotor;
 	public static Victor armMotor;
+	
+	public void init() {
+		frontLeftMotor = new Talon(kFrontLeftMotorPort);
+		rearLeftMotor = new Talon(kRearLeftMotorPort);
+		frontRightMotor = new Talon(kFrontRightMotorPort);
+		rearRightMotor = new Talon(kRearRightMotorPort);
+		armMotor = new Victor(kArmMotorPort);
+	}
 }
 	
 	
