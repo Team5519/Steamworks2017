@@ -39,6 +39,14 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	
 	// CY 1/12/2017
-	public static final int kDriveStickPort = 0;	// Default is 0, change if necessary.
-	public static Joystick driveStick;
-}
+	//TANVEER 1/13/17 s
+		public static final int kDriveStickPort = 0; // Find correct joystick port
+		public static Joystick driveStick;
+		
+		public static final int kExtendArmButtonNUmber = 0;  //Find correct joystick port
+		public static final int kCancelExtendArmButtonNumber = 0;  //Find correct joystick port
+		public static final int kRetractArmButtonNumber = 0;  //Find correct joystick port
+		public static final int kCancelRetractArmButtonNumber = 0;  //Find correct joystick port
+		public static final int kToggleArmButtonNumber = 0;  //Find correct joystick port
+		
+		
