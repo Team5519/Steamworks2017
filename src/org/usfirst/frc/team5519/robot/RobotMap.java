@@ -19,10 +19,15 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
+<<<<<<< HEAD
 	
 	// CY 1/12/2017
 	// DRIVE SYSTEMS FULL POWER!!!
 	// More motor ports will be added design continues.
+=======
+}
+//Output ports and controllers.
+>>>>>>> parent of 9b28f92... Fixed a huge bug
 	public static final int kFrontLeftMotorPort = 1;	// Need to find and set correct port
 	public static final int kRearLeftMotorPort = 2;		// Need to find and set correct port
 	public static final int kFrontRightMotorPort = 3;	// Need to find and set correct port
@@ -36,6 +41,7 @@ public class RobotMap {
 	public static Talon rearRightMotor;
 	public static Victor armMotor;
 	
+<<<<<<< HEAD
 	public void init() {
 		frontLeftMotor = new Talon(kFrontLeftMotorPort);
 		rearLeftMotor = new Talon(kRearLeftMotorPort);
@@ -44,6 +50,8 @@ public class RobotMap {
 		armMotor = new Victor(kArmMotorPort);
 	}
 }
+=======
+>>>>>>> parent of 9b28f92... Fixed a huge bug
 	
 	
 	
