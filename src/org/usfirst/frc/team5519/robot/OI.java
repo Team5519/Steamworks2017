@@ -2,11 +2,7 @@ package org.usfirst.frc.team5519.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
 
-import org.usfirst.frc.team5519.commands.ExtendArm;
-import org.usfirst.frc.team5519.commands.RetractArm;
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
 
 /**
@@ -42,50 +38,6 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
-	// CY 1/12/2017
-		public static final int kDriveStickPort = 0; // Find correct joystick port
-		public static Joystick driveStick;
-		
-<<<<<<< HEAD
-	// TANVEER 1/13/17
-		public static final int kExtendArmButtonNUmber = 0;  		// Find correct joystick port
-		public static final int kCancelExtendArmButtonNumber = 0;  	// Find correct joystick port
-		public static final int kRetractArmButtonNumber = 0; 		// Find correct joystick port
-		public static final int kCancelRetractArmButtonNumber = 0;  // Find correct joystick port
-		public static final int kToggleArmButtonNumber = 0;  		// Find correct joystick port
-=======
-		public static final int kExtendArmButtonNumber = 0;  //Find correct joystick port
-		public static final int kCancelExtendArmButtonNumber = 0;  //Find correct joystick port
-		public static final int kRetractArmButtonNumber = 0;  //Find correct joystick port
-		public static final int kCancelRetractArmButtonNumber = 0;  //Find correct joystick port
-		public static final int kToggleArmButtonNumber = 0;  //FInd correct joystick port
->>>>>>> origin/master
-		
-		public static Button extendArmButton;
-		public static Button cancelExtendArmButton;
-		public static Button retractArmButton;
-		public static Button cancelRetractArmButton;
-		public static Button toggleArmButton;
-		
-<<<<<<< HEAD
-=======
-		public OI() {
-			OI.driveStick = new Joystick(kDriveStickPort);
-			
-			Command extendArm = new ExtendArm();	// Have code the commands for ExtendArm
-			OI.extendArmButton = new JoystickButton(OI.driveStick,kExtendArmButtonNumber);
-			OI.extendArmButton.whenPressed(extendArm);
-			OI.cancelExtendArmButton = new JoystickButton(OI.driveStick,kCancelExtendArmButtonNumber);
-			OI.cancelExtendArmButton.cancelWhenPressed(extendArm);
-			
-			Command retractArm = new RetractArm();	// Have to code the commands for RetractArm
-			OI.retractArmButton = new JoystickButton(OI.driveStick,kRetractArmButtonNumber);
-			OI.retractArmButton.whenPressed(retractArm);
-			OI.cancelRetractArmButton = new JoystickButton(OI.driveStick,kCancelRetractArmButtonNumber);
-			OI.cancelRetractArmButton.cancelWhenPressed(retractArm);
-			OI.toggleArmButton = new JoystickButton(OI.driveStick,kToggleArmButtonNumber);
-			OI.toggleArmButton.toggleWhenPressed(retractArm);
-		}
-			
->>>>>>> origin/master
+	public static final int kDriveStickPort = 0;	// Need to find and set correct joy stick port
+	public static Joystick driveStick;
 }
