@@ -1,4 +1,4 @@
-
+ 
 package org.usfirst.frc.team5519.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -35,7 +35,8 @@ public class Robot extends IterativeRobot {
 	 * used for any initialization code.
 	 */
 	@Override
-	public void robotInit() {		
+	public void robotInit() {
+		RobotMap.init ();
         chooser = new SendableChooser();
         Command defaultAuto = null;
 		chooser.addDefault("Default Auto", defaultAuto);

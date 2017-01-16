@@ -19,20 +19,25 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	
+	// CY 1/16/2017
+	// Started development on shooter motor.
 	public static final int kFrontLeftMotorPort = 1;	// Need to find and set correct port
 	public static final int kRearLeftMotorPort = 2;		// Need to find and set correct port
 	public static final int kFrontRightMotorPort = 3;	// Need to find and set correct port
 	public static final int kRearRightMotorPort = 4;	// Need to find and set correct port
+	public static final int kShooterMotorPort = 5;		// Need to find and set correct port
 	
 	public static Talon frontLeftMotor;
 	public static Talon rearLeftMotor;
 	public static Talon frontRightMotor;
 	public static Talon rearRightMotor;
+	public static Talon shooterMotor;
 	
-	public void init() {
+	public static void init() {
 		frontLeftMotor = new Talon(kFrontLeftMotorPort);
 		rearLeftMotor = new Talon(kRearLeftMotorPort);
 		frontRightMotor = new Talon(kFrontRightMotorPort);
 		rearRightMotor = new Talon(kRearRightMotorPort);
+		shooterMotor = new Talon(kShooterMotorPort);
 	}
 }
