@@ -40,4 +40,8 @@ public class OI {
 	
 	public static final int kDriveStickPort = 0;	// Need to find and set correct joy stick port
 	public static Joystick driveStick;
+	
+	public OI() {
+		OI.driveStick = new Joystick(kDriveStickPort);
+	}
 }

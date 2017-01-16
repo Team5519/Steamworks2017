@@ -117,6 +117,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		driveBase.Drive(OI.driveStick);
 		Scheduler.getInstance().run();
 	}
 
