@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5519.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team5519.subsystems.SimpleArm;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,8 +37,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {		
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", defaultAuto);
-        chooser.addObject("My Auto", customAuto);
+        Command defaultAuto = null;
+		chooser.addDefault("Default Auto", defaultAuto);
+        Command customAuto = null;
+		chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
 		
         oi = new OI();
