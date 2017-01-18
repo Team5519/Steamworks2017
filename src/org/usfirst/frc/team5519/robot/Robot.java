@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5519.robot.commands.Shooter;
 import org.usfirst.frc.team5519.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -54,8 +53,6 @@ public class Robot extends IterativeRobot {
         
         // CY 1/17/2017
         // Initialization for Robot Functions
-        shooter = new Shooter();
-        shooter.initHardware();
         
 	}
 

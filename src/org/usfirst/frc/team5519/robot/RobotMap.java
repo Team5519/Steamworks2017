@@ -34,10 +34,30 @@ public class RobotMap {
 	public static Talon shooterMotor;
 	
 	public static void init() {
+
+		// CY 1/17/2017
+		// HYPERDRIVE ON FULL POWER!!!
+		// Remember to set front AND rear to the same value
+		
+		// Motors for left
 		frontLeftMotor = new Talon(kFrontLeftMotorPort);
+		frontLeftMotor.enableDeadbandElimination(true);
+			frontLeftMotor.set(1.0);
+			
 		rearLeftMotor = new Talon(kRearLeftMotorPort);
+		rearLeftMotor.enableDeadbandElimination(true);
+			rearLeftMotor.set(1.0);
+			
+		// Motor for right
 		frontRightMotor = new Talon(kFrontRightMotorPort);
+		frontRightMotor.enableDeadbandElimination(true);
+			frontRightMotor.set(0.6);
+			
 		rearRightMotor = new Talon(kRearRightMotorPort);
+		rearRightMotor.enableDeadbandElimination(true);
+			rearRightMotor.set(0.6);
+		
+		// There is where the robot functions motor code is.
 		shooterMotor = new Talon(kShooterMotorPort);
 	}
 }
