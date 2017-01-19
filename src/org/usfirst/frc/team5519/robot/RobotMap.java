@@ -26,12 +26,14 @@ public class RobotMap {
 	public static final int kFrontRightMotorPort = 3;	// Need to find and set correct port
 	public static final int kRearRightMotorPort = 4;	// Need to find and set correct port
 	public static final int kShooterMotorPort = 5;		// Need to find and set correct port
+	public static final int kIntakeMotorPort = 6;       // Need to find and set correct port
 	
 	public static Talon frontLeftMotor;
 	public static Talon rearLeftMotor;
 	public static Talon frontRightMotor;
 	public static Talon rearRightMotor;
 	public static Talon shooterMotor;
+	public static Talon IntakeMotor;
 	
 	public static void init() {
 
@@ -59,5 +61,8 @@ public class RobotMap {
 		
 		// There is where the robot functions motor code is.
 		shooterMotor = new Talon(kShooterMotorPort);
+		
+		// This is where the intake motor will go under.
+		IntakeMotor = new Talon(kShooterMotorPort);
 	}
 }
