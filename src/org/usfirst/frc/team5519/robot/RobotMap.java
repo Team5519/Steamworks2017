@@ -27,6 +27,7 @@ public class RobotMap {
 	public static final int kRearRightMotorPort = 4;	// Need to find and set correct port
 	public static final int kShooterMotorPort = 5;		// Need to find and set correct port
 	
+	// For the new chassis, the motors are Victors, so when we use the new bot we need to change accordingly.
 	public static Talon frontLeftMotor;
 	public static Talon rearLeftMotor;
 	public static Talon frontRightMotor;
