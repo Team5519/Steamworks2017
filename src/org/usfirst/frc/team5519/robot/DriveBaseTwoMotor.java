@@ -36,5 +36,12 @@ public class DriveBaseTwoMotor extends DriveBase {
 	 */
 	 public void Drive(double moveValue, double rotateValue) {
 		 myDrive.arcadeDrive(moveValue, rotateValue);
+		 	// Setting left/right motor speeds
+		    setLeftRightMotorOutputs(0.8, 1.0);
 	 }
+
+	private void setLeftRightMotorOutputs(double d, double e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
