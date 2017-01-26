@@ -1,11 +1,13 @@
 package org.usfirst.frc.team5519.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 public class DriveBaseTwoMotor extends DriveBase {
 	
 	protected RobotDrive myDrive;
+	private Joystick Joystick;
 	
 	public DriveBaseTwoMotor() {
 		// GSN - 11/12/2016
@@ -13,6 +15,8 @@ public class DriveBaseTwoMotor extends DriveBase {
         myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.rearLeftMotor, RobotMap.frontRightMotor, RobotMap.rearRightMotor);
         myDrive.setSafetyEnabled(true); 	// Ensure motor safety
         myDrive.setExpiration(0.1);			// Suggested default safety timeout
+        
+        Joystick = new Joystick(1);
 	}
 	
 	/**
@@ -36,7 +40,8 @@ public class DriveBaseTwoMotor extends DriveBase {
 	 */
 	 public void Drive(double moveValue, double rotateValue) {
 		 myDrive.arcadeDrive(moveValue, rotateValue);
-		 	// Setting left/right motor speeds
+		 	// Setting left/right motor speeds.
+		 	// May have to see if this does anything.
 		    setLeftRightMotorOutputs(0.8, 1.0);
 	 }
 

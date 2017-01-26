@@ -33,11 +33,11 @@ public class RobotMap {
 	public static final int kShooterMotorPort = 5;		// Need to find and set correct port
 	
 	// For the new chassis, the motors are Victors SP's and SPARK's, so when we use the new bot we need to change accordingly.
-	public static Talon frontLeftMotor;
-	public static Talon rearLeftMotor;
-	public static Talon frontRightMotor;
-	public static Talon rearRightMotor;
-	public static Talon shooterMotor;
+	public static VictorSP frontLeftMotor;
+	public static VictorSP rearLeftMotor;
+	public static VictorSP frontRightMotor;
+	public static VictorSP rearRightMotor;
+	public static VictorSP shooterMotor;
 	
 	public static void teleopPeriodic() {
 		
@@ -57,22 +57,27 @@ public class RobotMap {
 	public static void init() {
 
 		// CY 1/17/2017
-		
+		// Don't need to know...
 		// Motors for left
-		frontLeftMotor = new Talon(kFrontLeftMotorPort);
+		frontLeftMotor = new VictorSP(kFrontLeftMotorPort);
 		frontLeftMotor.enableDeadbandElimination(true);
+		frontLeftMotor.setSafetyEnabled(true);
 			
-		rearLeftMotor = new Talon(kRearLeftMotorPort);
+		rearLeftMotor = new VictorSP(kRearLeftMotorPort);
 		rearLeftMotor.enableDeadbandElimination(true);
+		rearLeftMotor.setSafetyEnabled(true);
 			
 		// Motor for right
-		frontRightMotor = new Talon(kFrontRightMotorPort);
+		frontRightMotor = new VictorSP(kFrontRightMotorPort);
 		frontRightMotor.enableDeadbandElimination(true);
+		frontRightMotor.setSafetyEnabled(true);
 			
-		rearRightMotor = new Talon(kRearRightMotorPort);
+		rearRightMotor = new VictorSP(kRearRightMotorPort);
 		rearRightMotor.enableDeadbandElimination(true);
+		rearRightMotor.setSafetyEnabled(true);
 		
 		// There is where the robot functions motor code is.
-		shooterMotor = new Talon(kShooterMotorPort);
+		shooterMotor = new VictorSP(kShooterMotorPort);
 	}
+	
 }
