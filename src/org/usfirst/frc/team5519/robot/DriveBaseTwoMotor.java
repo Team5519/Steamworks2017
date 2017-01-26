@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5519.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 public class DriveBaseTwoMotor extends DriveBase {
@@ -34,7 +35,42 @@ public class DriveBaseTwoMotor extends DriveBase {
 	 * 
 	 * @author GSN - 11/12/2016
 	 */
-	 public void Drive(double moveValue, double rotateValue) {
-		 myDrive.arcadeDrive(moveValue, rotateValue);
-	 }
+	  public void arcadeDrive(GenericHID stick, boolean squaredInputs) {
+		    // simply call the full-featured arcadeDrive with the appropriate values
+		    arcadeDrive(stick.getY(), stick.getX(), true);
+		    
+		    int speed;
+		    speed = (int) stick.getY();
+		    speed = (int) stick.getX();
+		    
+		    if (speed < 0) {
+		    	speed = -1*speed;
+		    }
+		    
+		    if (speed < 0.2) {
+		    	squaredInputs = true;
+		    }
+		    else {
+		    	squaredInputs = false;
+		    }
+		    
+		    setLeftRightMotorOutputs(1.0, 0.7);
+		    
+		  }
+
+	private void setLeftRightMotorOutputs(double d, double e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void arcadeDrive(double y, double x, boolean squaredInputs) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void Drive(double moveValue, double rotateValue) {
+		// TODO Auto-generated method stub
+		
+	}
 }
