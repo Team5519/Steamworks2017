@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5519.robot;
 
+import edu.wpi.first.wpilibj.PWMSpeedController;
 import edu.wpi.first.wpilibj.Talon;
 
 /**
@@ -9,60 +10,69 @@ import edu.wpi.first.wpilibj.Talon;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+	
+	public static boolean isLouise = true;
 	
 	// CY 1/16/2017
 	// Started development on shooter motor.
-	public static final int kFrontLeftMotorPort = 1;	// Need to find and set correct port
-	public static final int kRearLeftMotorPort = 2;		// Need to find and set correct port
-	public static final int kFrontRightMotorPort = 3;	// Need to find and set correct port
-	public static final int kRearRightMotorPort = 4;	// Need to find and set correct port
-	public static final int kShooterMotorPort = 5;		// Need to find and set correct port
-	public static final int kIntakeMotorPort = 6;       // Need to find and set correct port
+	public static int kFrontLeftMotorPort;
+	public static int kRearLeftMotorPort;	
+	public static int kFrontRightMotorPort;
+	public static int kRearRightMotorPort;
+	public static int kShooterMotorPort;
+	public static int kIntakeMotorPort;
 	
-	public static Talon frontLeftMotor;
-	public static Talon rearLeftMotor;
-	public static Talon frontRightMotor;
-	public static Talon rearRightMotor;
-	public static Talon shooterMotor;
-	public static Talon IntakeMotor;
+	public static PWMSpeedController frontLeftMotor;
+	public static PWMSpeedController rearLeftMotor;
+	public static PWMSpeedController frontRightMotor;
+	public static PWMSpeedController rearRightMotor;
+	public static PWMSpeedController shooterMotor;
+	public static PWMSpeedController IntakeMotor;
 	
 	public static void init() {
+		
+		if (isLouise) {
+			// Assign definitions for LOUISE (Test Bot)
+			kFrontLeftMotorPort = 1;	
+			kRearLeftMotorPort = 2;		
+			kFrontRightMotorPort = 3;	
+			kRearRightMotorPort = 4;	
+			kShooterMotorPort = 5;		
+			kIntakeMotorPort = 6;  
+			
+			frontLeftMotor = new Talon(kFrontLeftMotorPort);
+			rearLeftMotor = new Talon(kRearLeftMotorPort);
+			frontRightMotor = new Talon(kFrontRightMotorPort);
+			rearRightMotor = new Talon(kRearRightMotorPort);
+			
+			shooterMotor = new Talon(kShooterMotorPort);
+			IntakeMotor = new Talon(kIntakeMotorPort);
+			
+		} else {
+			// Assign definitions for ARBOUR (Competition Bot)
+			kFrontLeftMotorPort = 1;	
+			kRearLeftMotorPort = 2;		
+			kFrontRightMotorPort = 3;	
+			kRearRightMotorPort = 4;	
+			kShooterMotorPort = 5;		
+			kIntakeMotorPort = 6;  
+			
+			frontLeftMotor = new Talon(kFrontLeftMotorPort);
+			rearLeftMotor = new Talon(kRearLeftMotorPort);
+			frontRightMotor = new Talon(kFrontRightMotorPort);
+			rearRightMotor = new Talon(kRearRightMotorPort);
+			
+			shooterMotor = new Talon(kShooterMotorPort);
+			IntakeMotor = new Talon(kShooterMotorPort);
+			
+		}
 
 		// CY 1/17/2017
-		// HYPERDRIVE ON FULL POWER!!!
-		// Remember to set front AND rear to the same value
-		
 		// Motors for left
-		frontLeftMotor = new Talon(kFrontLeftMotorPort);
 		frontLeftMotor.enableDeadbandElimination(true);
-			frontLeftMotor.set(1.0);
-			
-		rearLeftMotor = new Talon(kRearLeftMotorPort);
 		rearLeftMotor.enableDeadbandElimination(true);
-			rearLeftMotor.set(1.0);
-			
-		// Motor for right
-		frontRightMotor = new Talon(kFrontRightMotorPort);
 		frontRightMotor.enableDeadbandElimination(true);
-			frontRightMotor.set(0.6);
-			
-		rearRightMotor = new Talon(kRearRightMotorPort);
 		rearRightMotor.enableDeadbandElimination(true);
-			rearRightMotor.set(0.6);
-		
-		// There is where the robot functions motor code is.
-		shooterMotor = new Talon(kShooterMotorPort);
-		
-		// This is where the intake motor will go under.
-		IntakeMotor = new Talon(kShooterMotorPort);
+			
 	}
 }
