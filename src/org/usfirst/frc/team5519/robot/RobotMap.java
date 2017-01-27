@@ -19,14 +19,16 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	
-	// CY 1/16/2017
-	// Started development on shooter motor.
+	// Edmond D. 1/27/2017
+	// Added the shooterHigh and shooterLow port, as well as the intake and to stop.
 	public static final int kFrontLeftMotorPort = 1;	// Need to find and set correct port
 	public static final int kRearLeftMotorPort = 2;		// Need to find and set correct port
 	public static final int kFrontRightMotorPort = 3;	// Need to find and set correct port
 	public static final int kRearRightMotorPort = 4;	// Need to find and set correct port
-	public static final int kShooterMotorPort = 5;		// Need to find and set correct port
-	public static final int kIntakeMotorPort = 6;       // Need to find and set correct port
+	public static final int kShooterHighPort = 5;       // Need to find and set correct port
+	public static final int kShooterLowPort = 6;        // Need to find and set correct port
+	public static final int kShooterStopPort = 7;       // Need to find and set correct port
+	public static final int kIntakeMotorPort = 8;       // Need to find and set correct port
 	
 	public static Talon frontLeftMotor;
 	public static Talon rearLeftMotor;
@@ -34,6 +36,9 @@ public class RobotMap {
 	public static Talon rearRightMotor;
 	public static Talon shooterMotor;
 	public static Talon IntakeMotor;
+	public static Talon ShooterHighMotor;
+	public static Talon ShooterLowMotor;
+	public static Talon ShooterStopMotor;
 	
 	public static void init() {
 
@@ -59,10 +64,17 @@ public class RobotMap {
 		rearRightMotor.enableDeadbandElimination(true);
 			rearRightMotor.set(0.6);
 		
-		// There is where the robot functions motor code is.
-		shooterMotor = new Talon(kShooterMotorPort);
+		//Edmond D. 1/27/2017
+		//This is the functions for the shooter's high motor.
+		ShooterHighMotor = new Talon(kShooterHighPort);
+		
+		//Functions for the shooter's low motor.
+		ShooterLowMotor = new Talon (kShooterLowPort);
+		
+		//Functions for stopping the shooter.
+		ShooterStopMotor = new Talon (kShooterStopPort);
 		
 		// This is where the intake motor will go under.
-		IntakeMotor = new Talon(kShooterMotorPort);
+		IntakeMotor = new Talon(kIntakeMotorPort);
 	}
 }
