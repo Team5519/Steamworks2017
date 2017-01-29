@@ -20,5 +20,4 @@ public abstract class DriveBase {
 	 */
 	 abstract void Drive(double moveValue, double rotateValue);
 	
-
 }
