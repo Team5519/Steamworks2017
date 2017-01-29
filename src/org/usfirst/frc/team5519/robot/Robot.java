@@ -157,7 +157,9 @@ public class Robot extends IterativeRobot {
             DriverStation.reportError("Error instantiating navX-MXP:  " + ex.getMessage(), true);
         }
 
-        
+		// GyroSamples - Camera Stuff
+		CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
+       
 	}
 
 	/**
@@ -237,8 +239,6 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		
-		// GyroSamples - Camera Stuff
-		CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
 	}
 
 	/**
