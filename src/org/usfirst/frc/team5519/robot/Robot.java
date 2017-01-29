@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5519.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5519.robot.subsystems.Intake;
+import org.usfirst.frc.team5519.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,7 +27,9 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
-    
+	
+    public static Shooter shooter;
+    public static Intake intake;
     public static DriveBase driveBase;
     public static TeleopStation teleopStation;
     private int driveCount;
@@ -45,15 +49,12 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auto choices", chooser);
 		
         oi = new OI();
-        
         driveBase = new DriveBaseTwoMotor();
         teleopStation = new TeleopStationOneStick();
+        shooter = new Shooter();
+        intake = new Intake();
         //driveStick = teleopStation.getDriveStick();
         driveCount = 0;
-        
-        // CY 1/17/2017
-        // Initialization for Robot Functions
-        
 	}
 
 	/**

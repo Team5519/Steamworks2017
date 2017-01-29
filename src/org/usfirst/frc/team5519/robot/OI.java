@@ -1,9 +1,13 @@
 package org.usfirst.frc.team5519.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5519.robot.commands.ShootHigh;
+import org.usfirst.frc.team5519.robot.commands.ShootLow;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -38,10 +42,29 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
-	public static final int kDriveStickPort = 0;	// Need to find and set correct joy stick port
+	// CY 1/29/2017
+	// Started development of assigning buttons.
+	public static final int kDriveStickPort = 0;	
+	public static final int kXboxControllerPort = 1;
+	
 	public static Joystick driveStick;
+	public static XboxController controller;
+	
+	public static final int kToggleShootHighButtonNumber = 1;
+	public static final int kToggleShootLowButtonNumber = 2;
+	
+	public static Button toggleShootHighButton;
+	public static Button toggleShootLowButton;
 	
 	public OI() {
 		OI.driveStick = new Joystick(kDriveStickPort);
+		OI.controller = new XboxController(kXboxControllerPort);
+		
+		Command ShootHigh = new ShootHigh();
+		OI.toggleShootHighButton.toggleWhenPressed(ShootHigh);
+		
+		Command ShootLow = new ShootLow();
+		OI.toggleShootLowButton.toggleWhenPressed(ShootLow);
 	}
+	
 }
