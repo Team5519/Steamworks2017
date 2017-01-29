@@ -1,6 +1,7 @@
  
 package org.usfirst.frc.team5519.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -36,6 +37,8 @@ public class Robot extends IterativeRobot {
     
     // GyroSamples
     AHRS ahrs;
+    private int autoCount;
+    private double Kp;
     
     public void dumpAHRSData () {
     	
@@ -144,6 +147,7 @@ public class Robot extends IterativeRobot {
         // CY 1/17/2017
         // Initialization for Robot Functions
         
+        // GyroSamples
         try {
             /* Communicate w/navX-MXP via the MXP SPI Bus.                                     */
             /* Alternatively:  I2C.Port.kMXP, SerialPort.Port.kMXP or SerialPort.Port.kUSB     */
@@ -196,6 +200,11 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		
+		// GyroSamples
+		ahrs.reset();
+		autoCount = 0;
+		Kp = 0.03;
 	}
 
 	/**
@@ -204,8 +213,21 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		
+		// GyroSamples - Drive Straight for 4 seconds
+		autoCount = autoCount + 1;
+		if (autoCount <= 200) {
+			// 4 seconds * 50Hz = 200 counts
+			double angle = ahrs.getAngle();
+			driveBase.Drive(-0.5, -angle*Kp);
+			// Timer.delay(0.004);
+			// Example Code to turn 90 degrees - Implement Twist???			
+		} else {
+			autoCount = 500;
+			driveBase.Drive(0.0, 0.0);
+		}		
 	}
-
+	
 	@Override
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
@@ -214,6 +236,9 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		
+		// GyroSamples - Camera Stuff
+		CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
 	}
 
 	/**
