@@ -52,7 +52,7 @@ public class Robot extends IterativeRobot {
     private int autoCount;
     private double Kp;
     
-    private AxisCamera camera;
+    //private AxisCamera camera;
     
     public void dumpAHRSData () {
     	
@@ -163,9 +163,24 @@ public class Robot extends IterativeRobot {
         
 		// GyroSamples - Camera Stuff
 		//CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
-        camera = CameraServer.getInstance().addAxisCamera("Axis Stream","axis-camera");
-        camera.setResolution(640, 480);
         //CameraServer.getInstance().addAxisCamera("axis local","axis-camera.local");
+        new Thread(() -> {
+            AxisCamera camera = CameraServer.getInstance().addAxisCamera("Axis Stream","axis-camera");
+            camera.setResolution(640, 480);
+            
+            CvSink cvSink = CameraServer.getInstance().getVideo();
+            CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
+            
+            Mat source = new Mat();
+            Mat output = new Mat();
+            
+            while(!Thread.interrupted()) {
+                cvSink.grabFrame(source);
+                Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+                outputStream.putFrame(output);
+            }
+        }).start();
+
         
         // GyroSamples
         try {
@@ -269,15 +284,6 @@ public class Robot extends IterativeRobot {
 		
 		// GyroSamples
 		dumpAHRSData();
-        CvSink cvSink = CameraServer.getInstance().getVideo();
-        CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
-        
-        Mat source = new Mat();
-        Mat output = new Mat();
-        
-        cvSink.grabFrame(source);
-        Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-        outputStream.putFrame(output);
 
 	}
 
