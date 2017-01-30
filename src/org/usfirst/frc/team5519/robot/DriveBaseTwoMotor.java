@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5519.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -41,13 +43,12 @@ public class DriveBaseTwoMotor extends DriveBase {
 		    
 		    int speed;
 		    speed = (int) stick.getY();
-		    speed = (int) stick.getX();
 		    
 		    if (speed < 0) {
 		    	speed = -1*speed;
 		    }
 		    
-		    if (speed < 0.2) {
+		    if (speed < 0.3) {
 		    	squaredInputs = true;
 		    }
 		    else {
@@ -55,7 +56,11 @@ public class DriveBaseTwoMotor extends DriveBase {
 		    }
 		    
 		    setLeftRightMotorOutputs(1.0, 1.0);
+<<<<<<< HEAD
 		    
+=======
+
+>>>>>>> origin/master
 		  }
 
 	private void setLeftRightMotorOutputs(double d, double e) {
@@ -70,7 +75,7 @@ public class DriveBaseTwoMotor extends DriveBase {
 
 	@Override
 	void Drive(double moveValue, double rotateValue) {
-		// TODO Auto-generated method stub
-		
+		// GyroSamples
+		myDrive.arcadeDrive(moveValue, rotateValue);		
 	}
 }
