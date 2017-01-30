@@ -41,7 +41,6 @@ public class DriveBaseTwoMotor extends DriveBase {
 		    
 		    int speed;
 		    speed = (int) stick.getY();
-		    speed = (int) stick.getX();
 		    
 		    if (speed < 0) {
 		    	speed = -1*speed;
@@ -54,7 +53,7 @@ public class DriveBaseTwoMotor extends DriveBase {
 		    	squaredInputs = false;
 		    }
 		    
-		    setLeftRightMotorOutputs(1.0, 0.7);
+		    setLeftRightMotorOutputs(0.7, 0.7);
 		    
 		  }
 

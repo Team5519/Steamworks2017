@@ -143,11 +143,12 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
 		
+        shooter = new Shooter();
+        intake = new Intake();
+        climber = new Climber();
         oi = new OI();
         driveBase = new DriveBaseTwoMotor();
         teleopStation = new TeleopStationOneStick();
-        shooter = new Shooter();
-        intake = new Intake();
         //driveStick = teleopStation.getDriveStick();
         driveCount = 0;
         
