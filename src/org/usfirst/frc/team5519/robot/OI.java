@@ -66,12 +66,6 @@ public class OI {
 	
 	public OI() {
 		OI.driveStick = new Joystick(kDriveStickPort);
-		
-		//Command shootHigh = new ShootHigh();
-		//OI.toggleShootButton.toggleWhenPressed(shootHigh);	// Could be change to toggleWhenHolding
-		
-		//Command shootLow = new ShootLow();
-		//OI.toggleShootButton.toggleWhenPressed(shootLow);	// Could be change to toggleWhenHolding
 		// OI.controller = new XboxController(kXboxControllerPort);
 		
 		Command ShootHigh = new ShootHigh();
@@ -83,7 +77,7 @@ public class OI {
 		OI.toggleShootLowButton.toggleWhenPressed(ShootLow);
 		
 		Command Climb = new Climb();
-		OI.climbButton = new JoystickButton(OI.driveStick, kClimbButtonNumber);
+		OI.climbButton = new JoystickButton(OI.driveStick,kClimbButtonNumber);
 		OI.climbButton.whileHeld(Climb);
 	}
 	

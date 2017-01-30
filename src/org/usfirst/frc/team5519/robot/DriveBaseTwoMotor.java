@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5519.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -53,7 +55,7 @@ public class DriveBaseTwoMotor extends DriveBase {
 		    	squaredInputs = false;
 		    }
 		    
-		    setLeftRightMotorOutputs(0.7, 0.7);
+		    setLeftRightMotorOutputs(1.0, 1.0);
 
 		  }
 
