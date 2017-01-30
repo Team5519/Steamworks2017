@@ -70,7 +70,7 @@ public class DriveBaseTwoMotor extends DriveBase {
 
 	@Override
 	void Drive(double moveValue, double rotateValue) {
-		// TODO Auto-generated method stub
-		
+		// GyroSamples
+		myDrive.arcadeDrive(moveValue, rotateValue);		
 	}
 }
