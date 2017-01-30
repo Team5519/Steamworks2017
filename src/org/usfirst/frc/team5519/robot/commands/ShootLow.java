@@ -13,7 +13,7 @@ public class ShootLow extends Command	{
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		Robot.shooter.ShootLow();
+		// Robot.shooter.ShootLow();
 	}
 	
 	@Override
