@@ -1,6 +1,9 @@
  
 package org.usfirst.frc.team5519.robot;
 
+import edu.wpi.cscore.AxisCamera;
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -10,6 +13,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5519.robot.commands.ShootHigh;
 import org.usfirst.frc.team5519.robot.subsystems.Climber;
@@ -46,6 +51,8 @@ public class Robot extends IterativeRobot {
     AHRS ahrs;
     private int autoCount;
     private double Kp;
+    
+    private AxisCamera camera;
     
     public void dumpAHRSData () {
     	
@@ -158,9 +165,10 @@ public class Robot extends IterativeRobot {
         shooter = new Shooter();
         
 		// GyroSamples - Camera Stuff
-		CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
-        CameraServer.getInstance().addAxisCamera("axis","axis-camera");
-        CameraServer.getInstance().addAxisCamera("axis local","axis-camera.local");
+		//CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
+        camera = CameraServer.getInstance().addAxisCamera("Axis Stream","axis-camera");
+        camera.setResolution(640, 480);
+        //CameraServer.getInstance().addAxisCamera("axis local","axis-camera.local");
         
         // GyroSamples
         try {
@@ -264,6 +272,16 @@ public class Robot extends IterativeRobot {
 		
 		// GyroSamples
 		dumpAHRSData();
+        CvSink cvSink = CameraServer.getInstance().getVideo();
+        CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
+        
+        Mat source = new Mat();
+        Mat output = new Mat();
+        
+        cvSink.grabFrame(source);
+        Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+        outputStream.putFrame(output);
+
 	}
 
 	/**
