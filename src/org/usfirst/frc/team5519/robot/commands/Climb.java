@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Climb extends Command {
 
 	public Climb()	{
-		requires(Robot.climber);
+		//requires(Robot.climber);
 	}
 	
 	@Override

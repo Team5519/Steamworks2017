@@ -219,6 +219,7 @@ public class Robot extends IterativeRobot {
 		ahrs.reset();
 		autoCount = 0;
 		Kp = 0.03;
+		Kp = 0.3;
 	}
 
 	/**
@@ -233,7 +234,7 @@ public class Robot extends IterativeRobot {
 		if (autoCount <= 200) {
 			// 4 seconds * 50Hz = 200 counts
 			double angle = ahrs.getAngle();
-			driveBase.Drive(-0.5, -angle*Kp);
+			driveBase.Drive(-0.5, angle*Kp);
 			// Timer.delay(0.004);
 			// Example Code to turn 90 degrees - Implement Twist???			
 		} else {
