@@ -3,6 +3,7 @@ package org.usfirst.frc.team5519.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5519.robot.commands.Climb;
@@ -74,12 +75,15 @@ public class OI {
 		// OI.controller = new XboxController(kXboxControllerPort);
 		
 		Command ShootHigh = new ShootHigh();
+		OI.toggleShootHighButton = new JoystickButton(OI.driveStick,kToggleShootHighButtonNumber);
 		OI.toggleShootHighButton.toggleWhenPressed(ShootHigh);
 		
 		Command ShootLow = new ShootLow();
+		OI.toggleShootLowButton = new JoystickButton(OI.driveStick,kToggleShootLowButtonNumber);
 		OI.toggleShootLowButton.toggleWhenPressed(ShootLow);
 		
 		Command Climb = new Climb();
+		OI.climbButton = new JoystickButton(OI.driveStick,kClimbButtonNumber);
 		OI.climbButton.whileHeld(Climb);
 	}
 	

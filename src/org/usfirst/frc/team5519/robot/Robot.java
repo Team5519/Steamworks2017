@@ -144,6 +144,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
 		
+        shooter = new Shooter();
+        intake = new Intake();
         oi = new OI();
         driveBase = new DriveBaseTwoMotor();
         teleopStation = new TeleopStationOneStick();
