@@ -4,22 +4,22 @@ import org.usfirst.frc.team5519.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ShootHigh extends Command	{
-	
-	public ShootHigh()	{
-		requires(Robot.shooter);
+public class Climb extends Command {
+
+	public Climb()	{
+		requires(Robot.climber);
 	}
 	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		// Robot.shooter.ShootHigh();
+		// Robot.climber.Climb();
 	}
 	
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.shooter.ShootHigh();
+		Robot.climber.Climb();
 	}
 	
 	@Override
@@ -27,11 +27,11 @@ public class ShootHigh extends Command	{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		Robot.shooter.stop();
+		Robot.climber.Climb();
 
 	}
 	
@@ -39,6 +39,6 @@ public class ShootHigh extends Command	{
 	protected void interrupted() {
 		// TODO Auto-generated method stub
 		end();
-
 	}
+	
 }

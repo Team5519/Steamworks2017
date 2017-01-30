@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5519.robot.subsystems.Climber;
 import org.usfirst.frc.team5519.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5519.robot.subsystems.Intake;
 import org.usfirst.frc.team5519.robot.subsystems.Shooter;
@@ -35,6 +36,7 @@ public class Robot extends IterativeRobot {
 	
     public static Shooter shooter;
     public static Intake intake;
+    public static Climber climber;
     public static DriveBase driveBase;
     public static TeleopStation teleopStation;
     private int driveCount;
