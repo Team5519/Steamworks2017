@@ -2,8 +2,11 @@ package org.usfirst.frc.team5519.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5519.robot.commands.ShootHigh;
+import org.usfirst.frc.team5519.robot.commands.ShootLow;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -41,7 +44,17 @@ public class OI {
 	public static final int kDriveStickPort = 0;	// Need to find and set correct joy stick port
 	public static Joystick driveStick;
 	
+	// CY 1/27/2017
+	public static final int kToggleShootButtonNumber = 1;
+	public static Button toggleShootButton;
+	
 	public OI() {
 		OI.driveStick = new Joystick(kDriveStickPort);
+		
+		//Command shootHigh = new ShootHigh();
+		//OI.toggleShootButton.toggleWhenPressed(shootHigh);	// Could be change to toggleWhenHolding
+		
+		//Command shootLow = new ShootLow();
+		//OI.toggleShootButton.toggleWhenPressed(shootLow);	// Could be change to toggleWhenHolding
 	}
 }

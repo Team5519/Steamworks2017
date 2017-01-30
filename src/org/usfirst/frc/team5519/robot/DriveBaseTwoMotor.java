@@ -47,14 +47,14 @@ public class DriveBaseTwoMotor extends DriveBase {
 		    	speed = -1*speed;
 		    }
 		    
-		    if (speed < 0.2) {
+		    if (speed < 0.3) {
 		    	squaredInputs = true;
 		    }
 		    else {
 		    	squaredInputs = false;
 		    }
 		    
-		    setLeftRightMotorOutputs(1.0, 0.7);
+		    setLeftRightMotorOutputs(1.0, 0.6);
 		    
 		  }
 

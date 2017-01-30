@@ -1,6 +1,7 @@
  
 package org.usfirst.frc.team5519.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -9,7 +10,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5519.robot.commands.ShootHigh;
 import org.usfirst.frc.team5519.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5519.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,6 +29,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
     
+    public static Shooter shooter;
     public static DriveBase driveBase;
     public static TeleopStation teleopStation;
     private int driveCount;
@@ -45,15 +49,16 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auto choices", chooser);
 		
         oi = new OI();
-        
         driveBase = new DriveBaseTwoMotor();
         teleopStation = new TeleopStationOneStick();
         //driveStick = teleopStation.getDriveStick();
         driveCount = 0;
-        
-        // CY 1/17/2017
+       
         // Initialization for Robot Functions
+        shooter = new Shooter();
         
+        CameraServer.getInstance().addAxisCamera("axis","axis-camera");
+        CameraServer.getInstance().addAxisCamera("axis local","axis-camera.local");
 	}
 
 	/**

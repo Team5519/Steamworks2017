@@ -20,6 +20,9 @@ public class RobotMap {
 	public static int kFrontRightMotorPort;
 	public static int kRearRightMotorPort;
 	public static int kShooterMotorPort;
+	public static int kShooterMotorPort1;
+	public static int kShooterMotorPort2;
+	public static int kShooterMotorPort3;
 	public static int kIntakeMotorPort;
 	
 	public static PWMSpeedController frontLeftMotor;
@@ -27,7 +30,10 @@ public class RobotMap {
 	public static PWMSpeedController frontRightMotor;
 	public static PWMSpeedController rearRightMotor;
 	public static PWMSpeedController shooterMotor;
-	public static PWMSpeedController IntakeMotor;
+	public static PWMSpeedController shooterMotor1;
+	public static PWMSpeedController shooterMotor2;
+	public static PWMSpeedController shooterMotor3;
+	public static PWMSpeedController intakeMotor;
 	
 	public static void init() {
 		
@@ -37,16 +43,25 @@ public class RobotMap {
 			kRearLeftMotorPort = 2;		
 			kFrontRightMotorPort = 3;	
 			kRearRightMotorPort = 4;	
-			kShooterMotorPort = 5;		
-			kIntakeMotorPort = 6;  
+			kShooterMotorPort = 5;
+			kShooterMotorPort1 = 6;
+			kShooterMotorPort2 = 7;
+			kShooterMotorPort3 = 8;
+			kIntakeMotorPort = 9;
 			
 			frontLeftMotor = new Talon(kFrontLeftMotorPort);
 			rearLeftMotor = new Talon(kRearLeftMotorPort);
 			frontRightMotor = new Talon(kFrontRightMotorPort);
 			rearRightMotor = new Talon(kRearRightMotorPort);
 			
+			// Shooter
 			shooterMotor = new Talon(kShooterMotorPort);
-			IntakeMotor = new Talon(kIntakeMotorPort);
+			shooterMotor1 = new Talon(kShooterMotorPort1);
+			shooterMotor2 = new Talon(kShooterMotorPort2);
+			shooterMotor3 = new Talon(kShooterMotorPort3);
+			
+			// Intake
+			intakeMotor = new Talon(kIntakeMotorPort);
 			
 		} else {
 			// Assign definitions for ARBOUR (Competition Bot)
@@ -54,16 +69,25 @@ public class RobotMap {
 			kRearLeftMotorPort = 2;		
 			kFrontRightMotorPort = 3;	
 			kRearRightMotorPort = 4;	
-			kShooterMotorPort = 5;		
-			kIntakeMotorPort = 6;  
+			kShooterMotorPort = 5;	
+			kShooterMotorPort1 = 6;
+			kShooterMotorPort2 = 7;
+			kShooterMotorPort3 = 8;
+			kIntakeMotorPort = 9;  
 			
 			frontLeftMotor = new Talon(kFrontLeftMotorPort);
 			rearLeftMotor = new Talon(kRearLeftMotorPort);
 			frontRightMotor = new Talon(kFrontRightMotorPort);
 			rearRightMotor = new Talon(kRearRightMotorPort);
 			
+			// Shooter
 			shooterMotor = new Talon(kShooterMotorPort);
-			IntakeMotor = new Talon(kShooterMotorPort);
+			shooterMotor1 = new Talon(kShooterMotorPort1);
+			shooterMotor2 = new Talon(kShooterMotorPort2);
+			shooterMotor3 = new Talon(kShooterMotorPort3);
+			
+			// Intake
+			intakeMotor = new Talon(kIntakeMotorPort);
 			
 		}
 
