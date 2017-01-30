@@ -1,19 +1,22 @@
 package org.usfirst.frc.team5519.robot;
 
-import com.kauailabs.navx.frc.AHRS;
-
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 public class DriveBaseTwoMotor extends DriveBase {
 	
 	protected RobotDrive myDrive;
+	private Gyro gyro;
+	
+	double Kp = 0.3;
 	
 	public DriveBaseTwoMotor() {
 		// GSN - 11/12/2016
         //myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.frontRightMotor);	// NOTE: left - Right order
-        myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.rearLeftMotor, RobotMap.frontRightMotor, RobotMap.rearRightMotor);
+	    gyro = new AnalogGyro(1);
+		myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.rearLeftMotor, RobotMap.frontRightMotor, RobotMap.rearRightMotor);
         myDrive.setSafetyEnabled(true); 	// Ensure motor safety
         myDrive.setExpiration(0.1);			// Suggested default safety timeout
 	}
