@@ -78,7 +78,7 @@ public class RobotMap {
 			
 		} else {
 			// Assign definitions for FARADAY (Competition Bot)
-			// ARBOUR will be using VictorSPs and Sparks.
+			// FARADAY will be using VictorSPs and Sparks.
 			kFrontLeftMotorPort = 1;	
 			kRearLeftMotorPort = 2;	
 			kFrontRightMotorPort = 3;	
@@ -109,7 +109,7 @@ public class RobotMap {
 		}
 
 		// CY 1/17/2017
-		// 
+		// Test to see if this makes a difference.
 		frontLeftMotor.enableDeadbandElimination(true);
 		rearLeftMotor.enableDeadbandElimination(true);
 		frontRightMotor.enableDeadbandElimination(true);

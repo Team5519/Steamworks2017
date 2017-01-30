@@ -54,7 +54,7 @@ public class DriveBaseTwoMotor extends DriveBase {
 		    	squaredInputs = false;
 		    }
 		    
-		    setLeftRightMotorOutputs(1.0, 0.7);
+		    setLeftRightMotorOutputs(1.0, 1.0);
 		    
 		  }
 
