@@ -153,16 +153,13 @@ public class Robot extends IterativeRobot {
 		
         shooter = new Shooter();
         intake = new Intake();
+        climber = new Climber()
+        		;
         oi = new OI();
         driveBase = new DriveBaseTwoMotor();
         teleopStation = new TeleopStationOneStick();
-        shooter = new Shooter();
-        intake = new Intake();
         //driveStick = teleopStation.getDriveStick();
         driveCount = 0;
-       
-        // Initialization for Robot Functions
-        shooter = new Shooter();
         
 		// GyroSamples - Camera Stuff
 		//CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
