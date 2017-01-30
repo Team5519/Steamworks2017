@@ -52,9 +52,13 @@ public class OI {
 	
 	public static final int kToggleShootHighButtonNumber = 1;
 	public static final int kToggleShootLowButtonNumber = 2;
+	public static final int kClimbingButtonNumber = 3;
+	public static final int kRepelButtonNumber = 5;
 	
 	public static Button toggleShootHighButton;
 	public static Button toggleShootLowButton;
+	public static Button climbingButton;
+	public static Button repelButton;
 	
 	public OI() {
 		OI.driveStick = new Joystick(kDriveStickPort);

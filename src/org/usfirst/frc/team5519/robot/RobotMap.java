@@ -36,6 +36,7 @@ public class RobotMap {
 	public static PWMSpeedController frontRightMotor;
 	public static PWMSpeedController rearRightMotor;
 	
+	// Shooter motors will be also used for climbing as well!!!
 	public static PWMSpeedController shooterMotor;
 	public static PWMSpeedController shooterMotor1;
 	public static PWMSpeedController shooterMotor2;
@@ -76,7 +77,7 @@ public class RobotMap {
 			intakeMotor = new Talon(kIntakeMotorPort1);
 			
 		} else {
-			// Assign definitions for ARBOUR (Competition Bot)
+			// Assign definitions for FARADAY (Competition Bot)
 			// ARBOUR will be using VictorSPs and Sparks.
 			kFrontLeftMotorPort = 1;	
 			kRearLeftMotorPort = 2;	
