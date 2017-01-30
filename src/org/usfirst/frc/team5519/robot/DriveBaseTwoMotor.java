@@ -56,11 +56,6 @@ public class DriveBaseTwoMotor extends DriveBase {
 		    }
 		    
 		    setLeftRightMotorOutputs(1.0, 1.0);
-<<<<<<< HEAD
-		    
-=======
-
->>>>>>> origin/master
 		  }
 
 	private void setLeftRightMotorOutputs(double d, double e) {

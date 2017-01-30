@@ -11,11 +11,7 @@ public class Climber extends Subsystem {
 		// TODO Auto-generated method stub
 		
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> origin/master
 	public void Climb()	{
 		RobotMap.shooterMotor.set(0.25);
 		RobotMap.shooterMotor1.set(0.25);
@@ -23,18 +19,7 @@ public class Climber extends Subsystem {
 		RobotMap.shooterMotor3.set(0.25);
 	}
 	
-	public void Repel()	{
-		RobotMap.shooterMotor.set(0.25);
-		RobotMap.shooterMotor1.set(0.25);
-		RobotMap.shooterMotor2.set(0.25);
-		RobotMap.shooterMotor3.set(0.25);
-	}
-	
-<<<<<<< HEAD
-	public void stop()	{
-=======
 	public void Stop()	{
->>>>>>> origin/master
 		RobotMap.shooterMotor.set(0.0);
 		RobotMap.shooterMotor1.set(0.0);
 		RobotMap.shooterMotor2.set(0.0);

@@ -5,15 +5,9 @@ import org.usfirst.frc.team5519.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class Climb extends Command {
-<<<<<<< HEAD
 	
 	public Climb ()	{
 		requires(Robot.climber);
-=======
-
-	public Climb()	{
-		//requires(Robot.climber);
->>>>>>> origin/master
 	}
 	
 	@Override
@@ -35,8 +29,6 @@ public class Climb extends Command {
 	}
 
 	@Override
-<<<<<<< HEAD
-=======
 	protected void end() {
 		// TODO Auto-generated method stub
 		Robot.climber.Climb();
@@ -44,7 +36,6 @@ public class Climb extends Command {
 	}
 	
 	@Override
->>>>>>> origin/master
 	protected void interrupted() {
 		// TODO Auto-generated method stub
 		end();
