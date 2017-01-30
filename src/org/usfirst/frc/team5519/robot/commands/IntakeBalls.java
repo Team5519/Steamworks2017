@@ -13,7 +13,7 @@ public class IntakeBalls extends Command {
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		Robot.intake.IntakeBalls();
+		// Robot.intake.IntakeBalls();
 	}
 	
 	@Override

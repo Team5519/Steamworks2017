@@ -52,6 +52,15 @@ public class OI {
 	
 	public static final int kToggleShootHighButtonNumber = 1;
 	public static final int kToggleShootLowButtonNumber = 2;
+<<<<<<< HEAD
+	public static final int kClimbingButtonNumber = 3;
+	public static final int kRepelButtonNumber = 5;
+	
+	public static Button toggleShootHighButton;
+	public static Button toggleShootLowButton;
+	public static Button climbingButton;
+	public static Button repelButton;
+=======
 	public static final int kClimbButtonNumber = 3;
 	
 	public static Button toggleShootHighButton;
@@ -61,6 +70,7 @@ public class OI {
 	// CY 1/27/2017
 	public static final int kToggleShootButtonNumber = 1;
 	public static Button toggleShootButton;
+>>>>>>> origin/master
 	
 	public OI() {
 		OI.driveStick = new Joystick(kDriveStickPort);

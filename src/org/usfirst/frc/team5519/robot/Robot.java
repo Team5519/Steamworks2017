@@ -1,6 +1,9 @@
  
 package org.usfirst.frc.team5519.robot;
 
+import edu.wpi.cscore.AxisCamera;
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -10,8 +13,13 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
+<<<<<<< HEAD
+=======
 import org.usfirst.frc.team5519.robot.commands.ShootHigh;
+>>>>>>> origin/master
 import org.usfirst.frc.team5519.robot.subsystems.Climber;
 import org.usfirst.frc.team5519.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5519.robot.subsystems.Intake;
@@ -30,11 +38,11 @@ import edu.wpi.first.wpilibj.SPI;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static OI oi;
-
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
+	public static OI oi;
     public static Shooter shooter;
     public static Intake intake;
     public static Climber climber;
@@ -46,6 +54,8 @@ public class Robot extends IterativeRobot {
     AHRS ahrs;
     private int autoCount;
     private double Kp;
+    
+    //private AxisCamera camera;
     
     public void dumpAHRSData () {
     	
@@ -155,9 +165,25 @@ public class Robot extends IterativeRobot {
         driveCount = 0;
         
 		// GyroSamples - Camera Stuff
-		CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
-        CameraServer.getInstance().addAxisCamera("axis","axis-camera");
-        CameraServer.getInstance().addAxisCamera("axis local","axis-camera.local");
+		//CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
+        //CameraServer.getInstance().addAxisCamera("axis local","axis-camera.local");
+        new Thread(() -> {
+            AxisCamera camera = CameraServer.getInstance().addAxisCamera("Axis Stream","axis-camera");
+            camera.setResolution(640, 480);
+            
+            CvSink cvSink = CameraServer.getInstance().getVideo();
+            CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
+            
+            Mat source = new Mat();
+            Mat output = new Mat();
+            
+            while(!Thread.interrupted()) {
+                cvSink.grabFrame(source);
+                Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+                outputStream.putFrame(output);
+            }
+        }).start();
+
         
         // GyroSamples
         try {
@@ -215,6 +241,7 @@ public class Robot extends IterativeRobot {
 		ahrs.reset();
 		autoCount = 0;
 		Kp = 0.03;
+		Kp = 0.3;
 	}
 
 	/**
@@ -229,7 +256,7 @@ public class Robot extends IterativeRobot {
 		if (autoCount <= 200) {
 			// 4 seconds * 50Hz = 200 counts
 			double angle = ahrs.getAngle();
-			driveBase.Drive(-0.5, -angle*Kp);
+			driveBase.Drive(-0.5, angle*Kp);
 			// Timer.delay(0.004);
 			// Example Code to turn 90 degrees - Implement Twist???			
 		} else {
@@ -259,6 +286,7 @@ public class Robot extends IterativeRobot {
 		
 		// GyroSamples
 		dumpAHRSData();
+
 	}
 
 	/**
