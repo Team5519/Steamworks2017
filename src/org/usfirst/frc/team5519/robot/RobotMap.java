@@ -27,7 +27,6 @@ public class RobotMap {
 	public static int kShooterMotorPort1;
 	public static int kShooterMotorPort2;
 	public static int kShooterMotorPort3;
-	
 	public static int kIntakeMotorPort;
 	public static int kIntakeMotorPort1;
 	
@@ -40,7 +39,6 @@ public class RobotMap {
 	public static PWMSpeedController shooterMotor1;
 	public static PWMSpeedController shooterMotor2;
 	public static PWMSpeedController shooterMotor3;
-	
 	public static PWMSpeedController intakeMotor;
 	public static PWMSpeedController intakeMotor1;
 	
@@ -51,7 +49,12 @@ public class RobotMap {
 			kFrontLeftMotorPort = 1;	
 			kRearLeftMotorPort = 2;		
 			kFrontRightMotorPort = 3;	
-			kRearRightMotorPort = 4;
+			kRearRightMotorPort = 4;	
+			kShooterMotorPort = 5;
+			kShooterMotorPort1 = 6;
+			kShooterMotorPort2 = 7;
+			kShooterMotorPort3 = 8;
+			kIntakeMotorPort = 9;
 			
 			kShooterMotorPort = 5;
 			kShooterMotorPort1 = 6;
@@ -67,11 +70,13 @@ public class RobotMap {
 			frontRightMotor = new Talon(kFrontRightMotorPort);
 			rearRightMotor = new Talon(kRearRightMotorPort);
 			
+			// Shooter
 			shooterMotor = new Talon(kShooterMotorPort);
 			shooterMotor1 = new Talon(kShooterMotorPort1);
 			shooterMotor2 = new Talon(kShooterMotorPort2);
 			shooterMotor3 = new Talon(kShooterMotorPort3);
 			
+			// Intake
 			intakeMotor = new Talon(kIntakeMotorPort);
 			intakeMotor = new Talon(kIntakeMotorPort1);
 			
@@ -82,7 +87,7 @@ public class RobotMap {
 			kRearLeftMotorPort = 2;	
 			kFrontRightMotorPort = 3;	
 			kRearRightMotorPort = 4;	
-			
+
 			kShooterMotorPort = 5;
 			kShooterMotorPort1 = 6;
 			kShooterMotorPort2 = 7;
@@ -103,7 +108,6 @@ public class RobotMap {
 			
 			intakeMotor = new Spark(kIntakeMotorPort);
 			intakeMotor1 = new Spark(kIntakeMotorPort1);
-			
 			
 		}
 

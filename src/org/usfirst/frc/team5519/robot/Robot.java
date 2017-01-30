@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5519.robot.commands.ShootHigh;
 import org.usfirst.frc.team5519.robot.subsystems.Climber;
 import org.usfirst.frc.team5519.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5519.robot.subsystems.Intake;
@@ -151,9 +152,14 @@ public class Robot extends IterativeRobot {
         teleopStation = new TeleopStationOneStick();
         //driveStick = teleopStation.getDriveStick();
         driveCount = 0;
-        
-        // CY 1/17/2017
+       
         // Initialization for Robot Functions
+        shooter = new Shooter();
+        
+		// GyroSamples - Camera Stuff
+		CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
+        CameraServer.getInstance().addAxisCamera("axis","axis-camera");
+        CameraServer.getInstance().addAxisCamera("axis local","axis-camera.local");
         
         // GyroSamples
         try {
@@ -164,9 +170,6 @@ public class Robot extends IterativeRobot {
         } catch (RuntimeException ex ) {
             DriverStation.reportError("Error instantiating navX-MXP:  " + ex.getMessage(), true);
         }
-
-		// GyroSamples - Camera Stuff
-		CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
        
 	}
 

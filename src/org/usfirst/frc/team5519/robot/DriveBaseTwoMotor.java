@@ -46,7 +46,7 @@ public class DriveBaseTwoMotor extends DriveBase {
 		    	speed = -1*speed;
 		    }
 		    
-		    if (speed < 0.2) {
+		    if (speed < 0.3) {
 		    	squaredInputs = true;
 		    }
 		    else {
@@ -54,7 +54,7 @@ public class DriveBaseTwoMotor extends DriveBase {
 		    }
 		    
 		    setLeftRightMotorOutputs(0.7, 0.7);
-		    
+
 		  }
 
 	private void setLeftRightMotorOutputs(double d, double e) {
