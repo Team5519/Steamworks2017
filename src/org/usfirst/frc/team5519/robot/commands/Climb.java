@@ -31,7 +31,7 @@ public class Climb extends Command {
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		Robot.climber.Climb();
+		Robot.climber.Stop();
 
 	}
 	

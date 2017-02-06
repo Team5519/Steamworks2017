@@ -53,11 +53,11 @@ public class OI {
 	public static final int kToggleShootHighButtonNumber = 1;
 	public static final int kToggleShootLowButtonNumber = 2;
 
-	public static final int kClimbButtonNumber = 3;
+	public static final int kToggleClimbButtonNumber = 3;
 	
 	public static Button toggleShootHighButton;
 	public static Button toggleShootLowButton;
-	public static Button climbButton;
+	public static Button toggleClimbButton;
 	
 	// CY 1/27/2017
 	public static final int kToggleShootButtonNumber = 1;
@@ -68,7 +68,7 @@ public class OI {
 		// OI.controller = new XboxController(kXboxControllerPort);
 		
 		Command ShootHigh = new ShootHigh();
-		OI.toggleShootHighButton = new JoystickButton(OI.driveStick,kToggleShootHighButtonNumber);
+		OI.toggleShootHighButton = new JoystickButton(OI.driveStick, kToggleShootHighButtonNumber);
 		OI.toggleShootHighButton.toggleWhenPressed(ShootHigh);
 		
 		Command ShootLow = new ShootLow();
@@ -76,8 +76,8 @@ public class OI {
 		OI.toggleShootLowButton.toggleWhenPressed(ShootLow);
 		
 		Command Climb = new Climb();
-		OI.climbButton = new JoystickButton(OI.driveStick,kClimbButtonNumber);
-		OI.climbButton.whileHeld(Climb);
+		OI.toggleClimbButton = new JoystickButton(OI.driveStick, kToggleClimbButtonNumber);
+		OI.toggleClimbButton.toggleWhenPressed(Climb);
 	}
 	
 }

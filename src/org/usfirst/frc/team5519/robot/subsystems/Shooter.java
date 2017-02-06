@@ -15,24 +15,24 @@ public class Shooter extends Subsystem {
 	// CY 1/29/2017
 	// This is where you set motor speeds for shooter.
 	public void ShootHigh()	{
-		RobotMap.shooterMotor.set(1.0);
 		RobotMap.shooterMotor1.set(1.0);
-		RobotMap.shooterMotor2.set(1.0);
-		RobotMap.shooterMotor3.set(1.0);
+		RobotMap.shooterMotor2.set(-1.0);
+		RobotMap.shooterMotor3.set(-1.0);
+		RobotMap.shooterMotor4.set(1.0);
 	}
 	
 	public void ShootLow()	{
-		RobotMap.shooterMotor.set(0.4);
 		RobotMap.shooterMotor1.set(0.4);
-		RobotMap.shooterMotor2.set(0.4);
+		RobotMap.shooterMotor2.set(-0.4);
+		RobotMap.shooterMotor2.set(-0.4);
 		RobotMap.shooterMotor3.set(0.4);
 	}
 
 	public void stop()	{
-		RobotMap.shooterMotor.set(0.0);
 		RobotMap.shooterMotor1.set(0.0);
 		RobotMap.shooterMotor2.set(0.0);
 		RobotMap.shooterMotor3.set(0.0);
+		RobotMap.shooterMotor4.set(0.0);
 	}
 	
 }

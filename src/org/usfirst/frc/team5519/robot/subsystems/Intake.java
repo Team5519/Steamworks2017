@@ -14,7 +14,6 @@ public class Intake extends Subsystem {
 	// CY 1/29/2017
 	// Here you can set what speed the intake motors run at. Suppose to run at low speed.
 	public void IntakeBalls() {
-		RobotMap.intakeMotor.set(0.25);
 		RobotMap.intakeMotor1.set(0.25);
 	}
 	
