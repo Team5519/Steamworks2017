@@ -13,17 +13,11 @@ public class Climber extends Subsystem {
 	}
 
 	public void Climb()	{
-		RobotMap.shooterMotor1.set(0.25);
-		RobotMap.shooterMotor2.set(0.25);
-		RobotMap.shooterMotor3.set(0.25);
-		RobotMap.shooterMotor4.set(0.25);
+		RobotMap.climberMotor1.set(-0.75);
 	}
 	
 	public void Stop()	{
-		RobotMap.shooterMotor1.set(0.0);
-		RobotMap.shooterMotor2.set(0.0);
-		RobotMap.shooterMotor3.set(0.0);
-		RobotMap.shooterMotor4.set(0.0);
+		RobotMap.climberMotor1.set(0.0);
 	}
 	
 }

@@ -24,8 +24,8 @@ public class Shooter extends Subsystem {
 	public void ShootLow()	{
 		RobotMap.shooterMotor1.set(0.4);
 		RobotMap.shooterMotor2.set(-0.4);
-		RobotMap.shooterMotor2.set(-0.4);
-		RobotMap.shooterMotor3.set(0.4);
+		RobotMap.shooterMotor3.set(-0.4);
+		RobotMap.shooterMotor4.set(0.4);
 	}
 
 	public void stop()	{

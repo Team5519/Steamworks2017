@@ -19,7 +19,7 @@ public class DriveBaseTwoMotor extends DriveBase {
 		// GSN - 11/12/2016
         //myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.frontRightMotor);	// NOTE: left - Right order
 	    gyro = new AnalogGyro(1);
-		myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.rearLeftMotor, RobotMap.frontRightMotor, RobotMap.rearRightMotor);
+		myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.frontRightMotor);
         myDrive.setSafetyEnabled(true); 	// Ensure motor safety
         myDrive.setExpiration(0.1);			// Suggested default safety timeout
 	}
@@ -39,6 +39,7 @@ public class DriveBaseTwoMotor extends DriveBase {
 	
 	  public void setSensitivity(double sensitivity) {
 		    m_sensitivity = sensitivity;
+		    sensitivity = 0.5;
 	}
 
 	@Override

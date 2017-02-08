@@ -27,30 +27,34 @@ public class RobotMap {
 	public static int kShooterMotorPort2;
 	public static int kShooterMotorPort3;
 	public static int kShooterMotorPort4;
+	
 	public static int kIntakeMotorPort1;
 	public static int kIntakeMotorPort2;
+	
+	public static int kClimberMotorPort1;
 	
 	public static PWMSpeedController frontLeftMotor;
 	public static PWMSpeedController rearLeftMotor;
 	public static PWMSpeedController frontRightMotor;
 	public static PWMSpeedController rearRightMotor;
 	
-	// Shooter motors will be also used for climbing as well!!!
 	public static PWMSpeedController shooterMotor1;
 	public static PWMSpeedController shooterMotor2;
 	public static PWMSpeedController shooterMotor3;
 	public static PWMSpeedController shooterMotor4;
+	
 	public static PWMSpeedController intakeMotor1;
 	public static PWMSpeedController intakeMotor2;
+	
+	public static PWMSpeedController climberMotor1;
 	
 	public static void init() {
 		
 		if (isLouise) {
 			// Assign definitions for LOUISE (Test Bot)
-			kFrontLeftMotorPort = 1;	
-			kRearLeftMotorPort = 2;		
-			kFrontRightMotorPort = 3;	
-			kRearRightMotorPort = 4;	
+			kFrontLeftMotorPort = 1;		
+			kFrontRightMotorPort = 3;
+			
 			kShooterMotorPort1 = 5;
 			kShooterMotorPort1 = 6;
 			kShooterMotorPort2 = 7;
@@ -66,53 +70,50 @@ public class RobotMap {
 			
 			// Assuming all motors will be using Talons.
 			frontLeftMotor = new Talon(kFrontLeftMotorPort);
-			rearLeftMotor = new Talon(kRearLeftMotorPort);
 			frontRightMotor = new Talon(kFrontRightMotorPort);
-			rearRightMotor = new Talon(kRearRightMotorPort);
 			
-			// Shooter
 			shooterMotor1 = new Talon(kShooterMotorPort1);
 			shooterMotor2 = new Talon(kShooterMotorPort2);
 			shooterMotor3 = new Talon(kShooterMotorPort3);
 			shooterMotor4 = new Talon(kShooterMotorPort4);
 			
-			// Intake
 			intakeMotor1 = new Talon(kIntakeMotorPort1);
+			
+			climberMotor1 = new Talon(kClimberMotorPort1);
 			
 		} else {
 			// Assign definitions for FARADAY (Competition Bot)
 			// FARADAY will be using VictorSPs and Sparks.
-			kFrontLeftMotorPort = 1;	
-			kFrontRightMotorPort = 9;	
+			kFrontLeftMotorPort = 0;	
+			kFrontRightMotorPort = 1;	
 
 			kShooterMotorPort1 = 2;
-			kShooterMotorPort2 = 7;		// REVERSE!!!
-			kShooterMotorPort3 = 8;		// REVERSE!!!
-			kShooterMotorPort4 = 3;
+			kShooterMotorPort2 = 3;
+			kShooterMotorPort3 = 4;
+			kShooterMotorPort4 = 5;
 			
-			kIntakeMotorPort1 = 6;
+			kIntakeMotorPort1 = 9;
+			
+			kClimberMotorPort1 = 8;
 			
 			frontLeftMotor = new VictorSP(kFrontLeftMotorPort);
-			rearLeftMotor = new VictorSP(kRearLeftMotorPort);
 			frontRightMotor = new VictorSP(kFrontRightMotorPort);
-			rearRightMotor = new VictorSP(kRearRightMotorPort);
 			
 			shooterMotor1 = new VictorSP(kShooterMotorPort1);
 			shooterMotor2 = new VictorSP(kShooterMotorPort2);
 			shooterMotor3 = new VictorSP(kShooterMotorPort3);
 			shooterMotor4 = new VictorSP(kShooterMotorPort4);
 			
-			intakeMotor1 = new Spark(kIntakeMotorPort1);
-			intakeMotor2 = new Spark(kIntakeMotorPort2);
+			intakeMotor1 = new VictorSP(kIntakeMotorPort1);
+			
+			climberMotor1 = new Spark(kClimberMotorPort1);
 			
 		}
 
 		// CY 1/17/2017
 		// Test to see if this makes a difference.
 		frontLeftMotor.enableDeadbandElimination(true);
-		rearLeftMotor.enableDeadbandElimination(true);
 		frontRightMotor.enableDeadbandElimination(true);
-		rearRightMotor.enableDeadbandElimination(true);
 			
 	}
 }
