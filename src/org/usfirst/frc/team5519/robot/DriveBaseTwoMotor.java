@@ -39,7 +39,6 @@ public class DriveBaseTwoMotor extends DriveBase {
 	
 	  public void setSensitivity(double sensitivity) {
 		    m_sensitivity = sensitivity;
-		    sensitivity = 0.5;
 	}
 
 	@Override

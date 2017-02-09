@@ -19,9 +19,7 @@ public class RobotMap {
 	// Finished development on shooter motors on Robot Map.
 	// Starting development on intake motors on Robot Map.
 	public static int kFrontLeftMotorPort;
-	public static int kRearLeftMotorPort;	
 	public static int kFrontRightMotorPort;
-	public static int kRearRightMotorPort;
 	
 	public static int kShooterMotorPort1;
 	public static int kShooterMotorPort2;
@@ -34,9 +32,7 @@ public class RobotMap {
 	public static int kClimberMotorPort1;
 	
 	public static PWMSpeedController frontLeftMotor;
-	public static PWMSpeedController rearLeftMotor;
 	public static PWMSpeedController frontRightMotor;
-	public static PWMSpeedController rearRightMotor;
 	
 	public static PWMSpeedController shooterMotor1;
 	public static PWMSpeedController shooterMotor2;
@@ -84,8 +80,8 @@ public class RobotMap {
 		} else {
 			// Assign definitions for FARADAY (Competition Bot)
 			// FARADAY will be using VictorSPs and Sparks.
-			kFrontLeftMotorPort = 0;	
-			kFrontRightMotorPort = 1;	
+			kFrontLeftMotorPort = 1;	
+			kFrontRightMotorPort = 0;	
 
 			kShooterMotorPort1 = 2;
 			kShooterMotorPort2 = 3;

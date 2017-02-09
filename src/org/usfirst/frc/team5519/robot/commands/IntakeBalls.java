@@ -27,6 +27,11 @@ public class IntakeBalls extends Command {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	protected void end() {
+		Robot.intake.Stop();
+	}
 
 	@Override
 	protected void interrupted() {

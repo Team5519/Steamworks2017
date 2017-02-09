@@ -1,11 +1,13 @@
 package org.usfirst.frc.team5519.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team5519.robot.commands.Climb;
+import org.usfirst.frc.team5519.robot.commands.IntakeBalls;
 import org.usfirst.frc.team5519.robot.commands.ShootHigh;
 import org.usfirst.frc.team5519.robot.commands.ShootLow;
 
@@ -45,39 +47,43 @@ public class OI {
 	// CY 1/29/2017
 	// Started development of assigning buttons.
 	public static final int kDriveStickPort = 0;	
-	// public static final int kXboxControllerPort = 1;
+	public static final int kXboxControllerPort = 1;
 	
 	public static Joystick driveStick;
-	// public static XboxController controller;
+	public static XboxController controller;
 	
-	public static final int kToggleShootHighButtonNumber = 1;
-	public static final int kToggleShootLowButtonNumber = 2;
+	// These are the buttons on the controller.
+	public static final int kToggleShootHighButtonNumber = 2;
+	public static final int kToggleShootLowButtonNumber = 3;
 
-	public static final int kToggleClimbButtonNumber = 3;
+	public static final int kToggleClimbButtonNumber = 1;
+	
+	public static final int kToggleIntakeButtonNumber = 4;
 	
 	public static Button toggleShootHighButton;
 	public static Button toggleShootLowButton;
 	public static Button toggleClimbButton;
-	
-	// CY 1/27/2017
-	public static final int kToggleShootButtonNumber = 1;
-	public static Button toggleShootButton;
+	public static Button toggleIntakeButton;
 	
 	public OI() {
 		OI.driveStick = new Joystick(kDriveStickPort);
-		// OI.controller = new XboxController(kXboxControllerPort);
+		OI.controller = new XboxController(kXboxControllerPort);
 		
 		Command ShootHigh = new ShootHigh();
-		OI.toggleShootHighButton = new JoystickButton(OI.driveStick, kToggleShootHighButtonNumber);
+		OI.toggleShootHighButton = new JoystickButton(OI.controller, kToggleShootHighButtonNumber);
 		OI.toggleShootHighButton.toggleWhenPressed(ShootHigh);
 		
 		Command ShootLow = new ShootLow();
-		OI.toggleShootLowButton = new JoystickButton(OI.driveStick, kToggleShootLowButtonNumber);
+		OI.toggleShootLowButton = new JoystickButton(OI.controller, kToggleShootLowButtonNumber);
 		OI.toggleShootLowButton.toggleWhenPressed(ShootLow);
 		
 		Command Climb = new Climb();
-		OI.toggleClimbButton = new JoystickButton(OI.driveStick, kToggleClimbButtonNumber);
+		OI.toggleClimbButton = new JoystickButton(OI.controller, kToggleClimbButtonNumber);
 		OI.toggleClimbButton.toggleWhenPressed(Climb);
+		
+		Command IntakeBalls = new IntakeBalls();
+		OI.toggleIntakeButton = new JoystickButton(OI.controller, kToggleIntakeButtonNumber);
+		OI.toggleIntakeButton.toggleWhenPressed(IntakeBalls);
 	}
 	
 }
