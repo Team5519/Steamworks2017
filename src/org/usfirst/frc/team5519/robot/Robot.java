@@ -6,6 +6,7 @@ import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -15,8 +16,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
-import org.usfirst.frc.team5519.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5519.robot.commands.ShootHigh;
 import org.usfirst.frc.team5519.robot.subsystems.Climber;
 import org.usfirst.frc.team5519.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5519.robot.subsystems.Intake;
@@ -45,6 +44,7 @@ public class Robot extends IterativeRobot {
     public static Climber climber;
     public static DriveBase driveBase;
     public static TeleopStation teleopStation;
+    public static Encoder encoder;
     private int driveCount;
     
     // GyroSamples
@@ -153,8 +153,10 @@ public class Robot extends IterativeRobot {
 		
         shooter = new Shooter();
         intake = new Intake();
-        climber = new Climber()
-        		;
+        climber = new Climber();
+        
+        encoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+        
         oi = new OI();
         driveBase = new DriveBaseTwoMotor();
         teleopStation = new TeleopStationOneStick();
@@ -193,6 +195,7 @@ public class Robot extends IterativeRobot {
         }
        
 	}
+	
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
