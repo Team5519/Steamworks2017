@@ -3,6 +3,7 @@ package org.usfirst.frc.team5519.robot;
 import edu.wpi.first.wpilibj.PWMSpeedController;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
 
 /**
@@ -13,7 +14,7 @@ import edu.wpi.first.wpilibj.VictorSP;
  */
 public class RobotMap {
 	
-	public static boolean isLouise = false;		// BE SURE TO SET THIS TO FALSE IF RUNNING FARADAY!!!
+	public static boolean isLouise = true;		// BE SURE TO SET THIS TO FALSE IF RUNNING FARADAY!!!
 	
 	// CY 1/29/2017
 	// Finished development on shooter motors on Robot Map.
@@ -48,8 +49,8 @@ public class RobotMap {
 		
 		if (isLouise) {
 			// Assign definitions for LOUISE (Test Bot)
-			kFrontLeftMotorPort = 1;		
-			kFrontRightMotorPort = 3;
+			kFrontLeftMotorPort = 0;		
+			kFrontRightMotorPort = 1;
 			
 			kShooterMotorPort1 = 5;
 			kShooterMotorPort1 = 6;
@@ -62,26 +63,25 @@ public class RobotMap {
 			kShooterMotorPort3 = 8;
 			
 			kIntakeMotorPort1 = 9;
-			kIntakeMotorPort2 = 0;		// Need to find out more about the expansion card. For now using port 0.
 			
 			// Assuming all motors will be using Talons.
-			frontLeftMotor = new Talon(kFrontLeftMotorPort);
-			frontRightMotor = new Talon(kFrontRightMotorPort);
+			frontLeftMotor = new Victor(kFrontLeftMotorPort);
+			frontRightMotor = new Victor(kFrontRightMotorPort);
 			
 			shooterMotor1 = new Talon(kShooterMotorPort1);
 			shooterMotor2 = new Talon(kShooterMotorPort2);
 			shooterMotor3 = new Talon(kShooterMotorPort3);
 			shooterMotor4 = new Talon(kShooterMotorPort4);
 			
-			intakeMotor1 = new Talon(kIntakeMotorPort1);
+			intakeMotor1 = new VictorSP(kIntakeMotorPort1);
 			
-			climberMotor1 = new Talon(kClimberMotorPort1);
+			// climberMotor1 = new Victor(kClimberMotorPort1);
 			
 		} else {
 			// Assign definitions for FARADAY (Competition Bot)
 			// FARADAY will be using VictorSPs and Sparks.
-			kFrontLeftMotorPort = 1;	
-			kFrontRightMotorPort = 0;	
+			kFrontLeftMotorPort = 0;	
+			kFrontRightMotorPort = 1;	
 
 			kShooterMotorPort1 = 2;
 			kShooterMotorPort2 = 3;

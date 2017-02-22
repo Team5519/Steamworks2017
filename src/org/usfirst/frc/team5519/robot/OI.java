@@ -46,8 +46,8 @@ public class OI {
 	
 	// CY 1/29/2017
 	// Started development of assigning buttons.
-	public static final int kDriveStickPort = 0;	
-	public static final int kXboxControllerPort = 1;
+	public static final int kDriveStickPort = 1;	
+	public static final int kXboxControllerPort = 2;
 	
 	public static Joystick driveStick;
 	public static XboxController controller;

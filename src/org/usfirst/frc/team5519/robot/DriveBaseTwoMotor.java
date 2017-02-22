@@ -33,7 +33,7 @@ public class DriveBaseTwoMotor extends DriveBase {
 	public void Drive(GenericHID stick) {
 		double moveValue = 0.75 * stick.getY();
 		// Correct left / right by inverting X-Axis values.
-		double rotateValue = -0.6 * stick.getX();
+		double rotateValue = -0.7 * stick.getX();
 		myDrive.arcadeDrive(moveValue, rotateValue, true);
 	}
 	
