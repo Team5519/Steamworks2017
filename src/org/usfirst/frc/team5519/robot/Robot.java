@@ -45,7 +45,6 @@ public class Robot extends IterativeRobot {
     public static DriveBase driveBase;
     public static TeleopStation teleopStation;
     public static Encoder encoder;
-    private int driveCount;
     
     // GyroSamples
     AHRS ahrs;
@@ -161,11 +160,11 @@ public class Robot extends IterativeRobot {
         driveBase = new DriveBaseTwoMotor();
         teleopStation = new TeleopStationOneStick();
         //driveStick = teleopStation.getDriveStick();
-        driveCount = 0;
         
 		// GyroSamples - Camera Stuff
 		//CameraServer.getInstance().addAxisCamera("Raw Axis Stream");
         //CameraServer.getInstance().addAxisCamera("axis local","axis-camera.local");
+        /**
         new Thread(() -> {
             AxisCamera camera = CameraServer.getInstance().addAxisCamera("Axis Stream","axis-camera");
             camera.setResolution(640, 480);
@@ -182,6 +181,7 @@ public class Robot extends IterativeRobot {
                 outputStream.putFrame(output);
             }
         }).start();
+        */
 
         
         // GyroSamples
@@ -250,19 +250,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		
-		// GyroSamples - Drive Straight for 4 seconds
-		autoCount = autoCount + 1;
-		if (autoCount <= 200) {
-			// 4 seconds * 50Hz = 200 counts
-			double angle = ahrs.getAngle();
-			driveBase.Drive(-0.5, angle*Kp);
-			// Timer.delay(0.004);
-			// Example Code to turn 90 degrees - Implement Twist???			
-		} else {
-			autoCount = 500;
-			driveBase.Drive(0.0, 0.0);
-		}		
 	}
 	
 	@Override
