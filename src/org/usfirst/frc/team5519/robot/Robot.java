@@ -20,6 +20,7 @@ import org.usfirst.frc.team5519.robot.subsystems.Climber;
 import org.usfirst.frc.team5519.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5519.robot.subsystems.Intake;
 import org.usfirst.frc.team5519.robot.subsystems.Shooter;
+import org.usfirst.frc.team5519.robot.subsystems.ShooterCamera;
 
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
@@ -44,7 +45,8 @@ public class Robot extends IterativeRobot {
     public static Climber climber;
     public static DriveBase driveBase;
     public static TeleopStation teleopStation;
-    public static Encoder encoder;
+    public static AxisCamera axisCamera;
+    public static ShooterCamera shooterCamera;
     
     // GyroSamples
     AHRS ahrs;
@@ -154,7 +156,10 @@ public class Robot extends IterativeRobot {
         intake = new Intake();
         climber = new Climber();
         
-        encoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+        axisCamera = new AxisCamera();
+        axisVision.initCameraHardware();
+        shooterCamera = new ShooterCamera();
+        shooterCamera.initCameraHardware();
         
         oi = new OI();
         driveBase = new DriveBaseTwoMotor();
@@ -268,7 +273,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		driveBase.Drive(OI.driveStick);
 		Scheduler.getInstance().run();
 		
 		// GyroSamples

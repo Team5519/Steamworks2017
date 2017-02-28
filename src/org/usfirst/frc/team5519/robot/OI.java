@@ -53,12 +53,12 @@ public class OI {
 	public static XboxController controller;
 	
 	// These are the buttons on the controller.
-	public static final int kToggleShootHighButtonNumber = 2;
-	public static final int kToggleShootLowButtonNumber = 3;
+	public static final int kToggleShootHighButtonNumber = 2;	// A
+	public static final int kToggleShootLowButtonNumber = 3;	// B
 
-	public static final int kToggleClimbButtonNumber = 1;
+	public static final int kToggleClimbButtonNumber = 1;		// X
 	
-	public static final int kToggleIntakeButtonNumber = 4;
+	public static final int kToggleIntakeButtonNumber = 4;		// Y
 	
 	public static Button toggleShootHighButton;
 	public static Button toggleShootLowButton;
