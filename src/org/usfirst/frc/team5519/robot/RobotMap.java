@@ -16,6 +16,13 @@ public class RobotMap {
 	
 	public static boolean isLouise = false;		// BE SURE TO SET THIS TO FALSE IF RUNNING FARADAY!!!
 	
+	public final static int START_POSITION_RIGHT = 0;
+	public final static int START_POSITION_CENTRE = 1;
+	public final static int START_POSITION_LEFT = 2;
+	
+	public final static double FOREWARD_BACK_MODIFIER = -1.0;
+	public final static double LEFT_RIGHT_MODIFIER = 1.0;
+	
 	// CY 1/29/2017
 	// Finished development on shooter motors on Robot Map.
 	// Starting development on intake motors on Robot Map.
@@ -42,6 +49,9 @@ public class RobotMap {
 	public static PWMSpeedController intakeMotor1;
 	
 	public static PWMSpeedController climberMotor1;
+	
+	public final static int kCIMcoderDioPortA = 0;
+	public final static int kCIMcoderDioPortB = 1;
 	
 	public static void init() {
 		if (isLouise) {

@@ -51,7 +51,7 @@ public class AutoAlignToPegTarget extends Command {
     protected boolean isFinished() {
     	if (Math.abs(Robot.axisVision.getTargetAngle()) < 1.0) {
     		// We are Within 1 degree which is good enough alignment for FRC work
-            DriverStation.reportWarning("COMMAND AlignToPegTarget is ALIGNED to target.", false);
+    		Robot.oi.messageDriverStation("COMMAND AlignToPegTarget is ALIGNED to target.");
     		return true;
     	}
         return false;

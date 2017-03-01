@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5519.robot.subsystems;
 
+import org.usfirst.frc.team5519.robot.Robot;
 import org.usfirst.frc.team5519.robot.RobotMap;
 import org.usfirst.frc.team5519.robot.commands.DriveWithJoystick;
 
@@ -27,8 +28,11 @@ public class DriveBaseAutonomous extends Subsystem {
     private static final double kDistancePerPulse = 0.018; // in meters, 32.3 cm divided by 10 pulses
     private Encoder cimCoder;
     
+    private boolean isGearFront;
+    
     
     public DriveBaseAutonomous() {
+    	isGearFront = true;
 		myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.frontRightMotor);
         myDrive.setSafetyEnabled(true); 	// Ensure motor safety
         myDrive.setExpiration(0.1);			// Suggested default safety timeout
@@ -76,11 +80,11 @@ public class DriveBaseAutonomous extends Subsystem {
 	}
 	
 	public void rotateInPlace(double targetAngle) {
-        DriverStation.reportWarning("Drive Rotate Bot rotateAngle:  " + targetAngle, false);
+		Robot.oi.messageDriverStation("Drive Rotate Bot rotateAngle:  " + targetAngle);
     	double rotateValue = -0.300;
     	if (targetAngle < 0.0) {
     		rotateValue = -1.3 * rotateValue;
-            DriverStation.reportWarning("Rotate in place applying CORRECTION.", false);
+    		Robot.oi.messageDriverStation("Rotate in place applying CORRECTION.");
     	}
 		//myDrive.drive(0.08, rotateValue);
 		//myDrive.drive(0.0, rotateValue);
@@ -91,23 +95,22 @@ public class DriveBaseAutonomous extends Subsystem {
 	/**
 	 * Just Drive! Under joystick command. 
 	 * Code stolen from RobotDrive
-	 * 
-	 * @author GSN - 11/12/2016
 	 */
 	public void drive(GenericHID stick) {
 		SmartDashboard.putNumber(   "Joystick/Y-Axis Value",       stick.getY());
 		SmartDashboard.putNumber(   "Joystick/X-Axis Value",       stick.getX());
- 		double moveValue = -0.75 * stick.getY();
+ 		double moveValue = 0.75 * stick.getY();
+ 		if(!isGearFront)	{
+ 			moveValue = -1 * moveValue;
+ 		}
 		// Correct left / right by inverting X-Axis values.
-		double rotateValue = -0.6 * stick.getX();
+		double rotateValue = -0.7 * stick.getX();
 		myDrive.arcadeDrive(moveValue, rotateValue, true);
 	}
 
 	/**
 	 * Drive using direct values. 
 	 * Code stolen from RobotDrive
-	 * 
-	 * @author GSN - 11/12/2016
 	 */
 	 public void directDrive(double moveValue, double targetAngle) {
 		//DriverStation.reportWarning("Drive Rotate Bot rotateAngle:  " + targetAngle, false);
@@ -211,6 +214,15 @@ public class DriveBaseAutonomous extends Subsystem {
         SmartDashboard.putNumber(   "AHRS/IMU_Update_Count",     ahrs.getUpdateCount());
 
     }
-
+    
+    public void toggleDriveFront()	{
+    	if(isGearFront) {
+    		isGearFront = false;
+    		Robot.oi.messageDriverStation("Shooter is now the front");
+    	} else {
+    		isGearFront = true;
+    		Robot.oi.messageDriverStation("Gear is now the front");
+    	}
+    }
 	
 }

@@ -30,7 +30,7 @@ public class AutoDriveStraightDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        DriverStation.reportWarning("COMMAND DriveStraightDistance reported distance is = " + Robot.driveBase.getDistanceTraveled(), false);
+    	Robot.oi.messageDriverStation("COMMAND DriveStraightDistance reported distance is = " + Robot.driveBase.getDistanceTraveled());
         if (Math.abs(Robot.driveBase.getDistanceTraveled()) > (requiredDistance-0.25)) {
         	Robot.driveBase.driveStraight(kSMV);
         } else {
@@ -41,7 +41,7 @@ public class AutoDriveStraightDistance extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if (Math.abs(Robot.driveBase.getDistanceTraveled()) >= requiredDistance) {
-            DriverStation.reportWarning("COMMAND DriveStraightDistance ARRIVED distance is = " + Robot.driveBase.getDistanceTraveled(), false);
+    		Robot.oi.messageDriverStation("COMMAND DriveStraightDistance ARRIVED distance is = " + Robot.driveBase.getDistanceTraveled());
     		return true;
     	}
         return false;

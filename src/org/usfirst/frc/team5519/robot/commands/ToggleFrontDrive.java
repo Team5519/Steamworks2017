@@ -7,10 +7,10 @@ import org.usfirst.frc.team5519.robot.Robot;
 /**
  *
  */
-public class ExampleCommand extends Command {
-	public ExampleCommand() {
+public class ToggleFrontDrive extends Command {
+	public ToggleFrontDrive() {
 		// Use requires() here to declare subsystem dependencies
-		//requires(Robot.exampleSubsystem);
+		requires(Robot.driveBase);
 	}
 
 	// Called just before this Command runs the first time
@@ -21,12 +21,13 @@ public class ExampleCommand extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		Robot.driveBase.toggleDriveFront();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	// Called once after isFinished returns true

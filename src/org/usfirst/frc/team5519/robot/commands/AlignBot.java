@@ -34,7 +34,7 @@ public class AlignBot extends Command {
     	if (Math.abs(Robot.axisVision.getTargetAngle()) > 1.0) {
     		return false;
     	}
-        DriverStation.reportWarning("Align Bot is Positioned:  ", false);
+    	Robot.oi.messageDriverStation("Align Bot is Positioned.");
         return true;
     }
 
