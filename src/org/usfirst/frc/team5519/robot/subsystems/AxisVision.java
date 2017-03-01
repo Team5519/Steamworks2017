@@ -80,7 +80,7 @@ public class AxisVision extends Subsystem {
                 pegTarget.dumpStatistics();
                 pegTarget.drawBoxOnImage(snapshot);
                 outputStream.putFrame(snapshot);
-                Timer.delay(0.1);
+                Timer.delay(0.05);
             }
         });
         visionThread.start();

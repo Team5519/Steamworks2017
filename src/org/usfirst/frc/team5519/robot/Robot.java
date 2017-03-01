@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5519.robot.commands.AssistDeliverGear;
+import org.usfirst.frc.team5519.robot.commands.AutoAlignToPegTarget;
 import org.usfirst.frc.team5519.robot.commands.AutoDeliverGear;
 import org.usfirst.frc.team5519.robot.commands.AutoDriveStraightDistance;
 import org.usfirst.frc.team5519.robot.commands.AutoDriveToPegTarget;
@@ -103,6 +104,15 @@ public class Robot extends IterativeRobot {
 			case "Auto Centre 1": 
 				autonomousCommand = new AutoDriveToPegTarget(); 
 				break; 
+			case "Auto Align":
+				autonomousCommand = new AutoAlignToPegTarget(RobotMap.START_POSITION_LEFT);
+				break;
+			case "Auto Drive 3m":
+				autonomousCommand = new AutoDriveStraightDistance(3.0);
+				break;
+			case "Auto To Peg":
+				autonomousCommand = new AutoDriveToPegTarget();
+				break;
 			case "Auto Default": 
 			default:
 				autonomousCommand = new AutoDriveStraightDistance(3.0); 

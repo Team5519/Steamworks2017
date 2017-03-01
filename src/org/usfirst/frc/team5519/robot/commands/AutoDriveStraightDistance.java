@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoDriveStraightDistance extends Command {
 
-	private static final double kFMV = 0.5;		// FAST move value
-	private static final double kSMV = 0.20;	// SLOW move value
+	private static final double kFMV = -0.6;		// FAST move value
+	private static final double kSMV = -0.30;	// SLOW move value
 	
 	private double requiredDistance;
 	

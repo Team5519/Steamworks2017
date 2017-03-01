@@ -30,6 +30,30 @@ public class DriveBaseAutonomous extends Subsystem {
     
     private boolean isGearFront;
     
+    public double pidRotateAngle(double angle)	{
+    	double pid = 0.0;
+    	double absAngle = Math.abs(angle);
+    	if(absAngle>= 25.0) {
+    		pid = 0.5;
+    	}else if(absAngle>= 15.0) {
+    		pid = 0.5;
+    	}else if(absAngle>= 10.0) {
+    		pid = 0.5;
+    	}else if(absAngle>=5.0)	{
+    		pid = 0.45;
+    	}else if(absAngle>=1.0)	{
+    		pid = 0.45;
+    	}else	{
+    		pid = absAngle * 0.45;
+    	}
+    	if(angle<=0.0)	{
+    		pid = pid * -1.0;
+    	}else {
+    		pid = pid * 1.2;
+    		
+    	}
+    	return pid;
+    }
     
     public DriveBaseAutonomous() {
     	isGearFront = true;
@@ -75,17 +99,22 @@ public class DriveBaseAutonomous extends Subsystem {
    
 	public void driveStraight(double moveValue) {
 		// GyroSamples
-		double rotateValue = ahrs.getAngle()* kP;
+		// double rotateValue = ahrs.getAngle()* kP;
+		double rotateValue = pidRotateAngle(ahrs.getAngle());
 		directDrive(moveValue, rotateValue);
 	}
 	
 	public void rotateInPlace(double targetAngle) {
 		Robot.oi.messageDriverStation("Drive Rotate Bot rotateAngle:  " + targetAngle);
-    	double rotateValue = -0.300;
+    	/*
+    	 * double rotateValue = -0.300;
+    	
     	if (targetAngle < 0.0) {
     		rotateValue = -1.3 * rotateValue;
     		Robot.oi.messageDriverStation("Rotate in place applying CORRECTION.");
     	}
+    	 */
+    	 double rotateValue = pidRotateAngle(-1.0 * targetAngle);
 		//myDrive.drive(0.08, rotateValue);
 		//myDrive.drive(0.0, rotateValue);
 		myDrive.arcadeDrive(0.001, rotateValue, true);
@@ -119,6 +148,7 @@ public class DriveBaseAutonomous extends Subsystem {
 	    	rotateValue = -1.3 * rotateValue;
 	        //DriverStation.reportWarning("Rotate in place applying CORRECTION.", false);
 	    }
+	    rotateValue = pidRotateAngle (targetAngle);
 	 	myDrive.arcadeDrive(moveValue, rotateValue);			 
 	 }
 	 

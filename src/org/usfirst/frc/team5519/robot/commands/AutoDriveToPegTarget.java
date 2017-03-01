@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoDriveToPegTarget extends Command {
 	
-	private static final double  kFMV = 0.5;					// Initial FAST move value
-	private static final double  kSMV = 0.25;					// Initial SLOW move value
-	private static final double  kMIN_TARGET_DISTANCE = 0.4;	// Target distance limit for isFinished
-	private static final double  kCLOSE_TARGET_DISTANCE = 1.0;	// Target distance limit for slower approach speed
+	private static final double  kFMV = 0.6;					// Initial FAST move value
+	private static final double  kSMV = 0.4;					// Initial SLOW move value
+	private static final double  kMIN_TARGET_DISTANCE = 0.3;	// Target distance limit for isFinished
+	private static final double  kCLOSE_TARGET_DISTANCE = 0.5;	// Target distance limit for slower approach speed
 	private double moveValue;
 	private double rotateAngle;
 	
@@ -38,22 +38,24 @@ public class AutoDriveToPegTarget extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	moveValue = 0.0;
     	if (Robot.axisVision.isTargetLocked()) {
     		sanityCounter = 0;
+    		moveValue = kFMV;
     		//rotateValue = Robot.axisVision.getTargetAngle() * kP;
     		rotateAngle = Robot.axisVision.getTargetAngle();
         	if (Robot.axisVision.getTargetDistance() < kCLOSE_TARGET_DISTANCE) {
         		// Slow down for last 1.0 meters
         		moveValue = kSMV;
         	}
-            //DriverStation.reportWarning("COMMAND DriveToPegTarget is LOCKED on target." + rotateAngle, false);
-           	Robot.driveBase.directDrive(moveValue, rotateAngle);
+            DriverStation.reportWarning("COMMAND DriveToPegTarget is LOCKED on target." + rotateAngle, false);
+           	Robot.driveBase.directDrive(-1 * moveValue, -1 * rotateAngle);
     	} else {
     		// Target is NOT locked so increment sanity and use last known good values 
     		sanityCounter = sanityCounter +1;
            	//Robot.driveBase.directDrive(kSMV, rotateValue);
     		Robot.driveBase.directDrive(0, 0);
-            //DriverStation.reportWarning("COMMAND DriveToPegTarget is NOT LOCKED." + rotateAngle, false);
+            DriverStation.reportWarning("COMMAND DriveToPegTarget is NOT LOCKED." + rotateAngle, false);
     	}
     }
 
