@@ -12,9 +12,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5519.robot.commands.AssistDeliverGear;
 import org.usfirst.frc.team5519.robot.commands.AutoAlignToPegTarget;
+import org.usfirst.frc.team5519.robot.commands.AutoCenterOne;
 import org.usfirst.frc.team5519.robot.commands.AutoDeliverGear;
 import org.usfirst.frc.team5519.robot.commands.AutoDriveStraightDistance;
 import org.usfirst.frc.team5519.robot.commands.AutoDriveToPegTarget;
+import org.usfirst.frc.team5519.robot.commands.AutoLeftOne;
+import org.usfirst.frc.team5519.robot.commands.AutoRightOne;
 import org.usfirst.frc.team5519.robot.subsystems.AxisVision;
 import org.usfirst.frc.team5519.robot.subsystems.Climber;
 import org.usfirst.frc.team5519.robot.subsystems.DriveBaseAutonomous;
@@ -96,13 +99,13 @@ public class Robot extends IterativeRobot {
         oi.messageDriverStation("AUTONOMOUS COMMAND = " + autoSelected);
 		switch(autoSelected) { 
 			case "Auto Left 1": 
-				autonomousCommand = new AutoDeliverGear(RobotMap.START_POSITION_LEFT); 
+				autonomousCommand = new AutoLeftOne(RobotMap.START_POSITION_LEFT); 
 				break; 
 			case "Auto Right 1": 
-				autonomousCommand = new AutoDeliverGear(RobotMap.START_POSITION_RIGHT); 
+				autonomousCommand = new AutoRightOne(RobotMap.START_POSITION_RIGHT); 
 				break; 
 			case "Auto Centre 1": 
-				autonomousCommand = new AutoDriveToPegTarget(); 
+				autonomousCommand = new AutoCenterOne(RobotMap.START_POSITION_CENTRE); 
 				break; 
 			case "Auto Align":
 				autonomousCommand = new AutoAlignToPegTarget(RobotMap.START_POSITION_LEFT);
