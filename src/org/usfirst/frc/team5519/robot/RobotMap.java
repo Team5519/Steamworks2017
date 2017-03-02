@@ -14,6 +14,10 @@ import edu.wpi.first.wpilibj.VictorSP;
  */
 public class RobotMap {
 	
+	/* 
+	 * NOTE: 	Competition bot is LOUISE (Wifi Radio Config)
+	 * 			Practice bot is ARBOUR (Wifi Radio Config)
+	 */
 	public static boolean isLouise = false;		// BE SURE TO SET THIS TO FALSE IF RUNNING FARADAY!!!
 	
 	public final static int START_POSITION_RIGHT = 0;
@@ -22,6 +26,11 @@ public class RobotMap {
 	
 	public final static double FOREWARD_BACK_MODIFIER = -1.0;
 	public final static double LEFT_RIGHT_MODIFIER = 1.0;
+	
+	public final static double AUTO_HIGH_SPEED = 0.7;
+	public final static double AUTO_MEDIUM_SPEED = 0.5;
+	public final static double AUTO_SLOW_SPEED = 0.3;
+
 	
 	// CY 1/29/2017
 	// Finished development on shooter motors on Robot Map.

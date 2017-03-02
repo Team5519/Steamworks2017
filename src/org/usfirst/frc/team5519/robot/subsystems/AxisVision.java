@@ -61,7 +61,10 @@ public class AxisVision extends Subsystem {
         visionThread = new Thread(() -> {
             Mat snapshot = new Mat();
             CvSink cvSink = CameraServer.getInstance().getVideo();
-            CvSource outputStream = CameraServer.getInstance().putVideo("Vision Thread", IMG_WIDTH, IMG_HEIGHT);
+            CvSource outputStream = null;
+            if (Robot.oi.doMessageDriverStation) {
+               outputStream = CameraServer.getInstance().putVideo("Vision Thread", IMG_WIDTH, IMG_HEIGHT);
+            }
             PegVisionPipeline pipeline = new PegVisionPipeline();    // GRIP code
             while(!Thread.interrupted()) {
                 cvSink.grabFrame(snapshot);		// grabs the snapshot
@@ -76,10 +79,12 @@ public class AxisVision extends Subsystem {
                     targetDistance = pegTarget.estimateDistance();
                     isTargetLocked = pegTarget.isEstablished();
                 }
-                //snapshot = pipeline.hslThresholdOutput();
-                pegTarget.dumpStatistics();
-                pegTarget.drawBoxOnImage(snapshot);
-                outputStream.putFrame(snapshot);
+                if (Robot.oi.doMessageDriverStation) {
+                    //snapshot = pipeline.hslThresholdOutput();
+                    pegTarget.dumpStatistics();
+                    pegTarget.drawBoxOnImage(snapshot);
+                    outputStream.putFrame(snapshot);               	
+                }
                 Timer.delay(0.05);
             }
         });

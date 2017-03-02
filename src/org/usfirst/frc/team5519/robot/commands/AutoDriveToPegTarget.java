@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5519.robot.commands;
 
 import org.usfirst.frc.team5519.robot.Robot;
+import org.usfirst.frc.team5519.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -10,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoDriveToPegTarget extends Command {
 	
-	private static final double  kFMV = 0.6;					// Initial FAST move value
-	private static final double  kSMV = 0.4;					// Initial SLOW move value
+	//private static final double  kFMV = 0.6;					// Initial FAST move value
+	//private static final double  kSMV = 0.4;					// Initial SLOW move value
 	private static final double  kMIN_TARGET_DISTANCE = 0.3;	// Target distance limit for isFinished
 	private static final double  kCLOSE_TARGET_DISTANCE = 0.5;	// Target distance limit for slower approach speed
 	private double moveValue;
@@ -30,7 +31,7 @@ public class AutoDriveToPegTarget extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	moveValue = kFMV;
+    	moveValue = RobotMap.AUTO_HIGH_SPEED;
     	rotateAngle = 0.0;
     	sanityCounter = 0;
     	Robot.driveBase.stopDead();
@@ -41,12 +42,12 @@ public class AutoDriveToPegTarget extends Command {
     	moveValue = 0.0;
     	if (Robot.axisVision.isTargetLocked()) {
     		sanityCounter = 0;
-    		moveValue = kFMV;
+    		moveValue = RobotMap.AUTO_HIGH_SPEED;
     		//rotateValue = Robot.axisVision.getTargetAngle() * kP;
     		rotateAngle = Robot.axisVision.getTargetAngle();
         	if (Robot.axisVision.getTargetDistance() < kCLOSE_TARGET_DISTANCE) {
         		// Slow down for last 1.0 meters
-        		moveValue = kSMV;
+        		moveValue = RobotMap.AUTO_SLOW_SPEED;
         	}
             DriverStation.reportWarning("COMMAND DriveToPegTarget is LOCKED on target." + rotateAngle, false);
            	Robot.driveBase.directDrive(-1 * moveValue, -1 * rotateAngle);

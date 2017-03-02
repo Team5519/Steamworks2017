@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5519.robot.commands;
 
 import org.usfirst.frc.team5519.robot.Robot;
+import org.usfirst.frc.team5519.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -10,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoDriveStraightDistance extends Command {
 
-	private static final double kFMV = -0.6;		// FAST move value
-	private static final double kSMV = -0.30;	// SLOW move value
+	//private static final double kFMV = -0.6;		// FAST move value
+	//private static final double kSMV = -0.30;	// SLOW move value
 	
 	private double requiredDistance;
 	
@@ -32,9 +33,9 @@ public class AutoDriveStraightDistance extends Command {
     protected void execute() {
     	Robot.oi.messageDriverStation("COMMAND DriveStraightDistance reported distance is = " + Robot.driveBase.getDistanceTraveled());
         if (Math.abs(Robot.driveBase.getDistanceTraveled()) > (requiredDistance-0.25)) {
-        	Robot.driveBase.driveStraight(kSMV);
+        	Robot.driveBase.driveStraight(RobotMap.AUTO_SLOW_SPEED);
         } else {
-        	Robot.driveBase.driveStraight(kFMV);
+        	Robot.driveBase.driveStraight(RobotMap.AUTO_HIGH_SPEED);
         }
     }
 

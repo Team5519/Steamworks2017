@@ -83,7 +83,7 @@ public class OI {
 	public static Button toggleClimbButton;
 	public static Button toggleIntakeButton;
 
-    private static boolean doMessageDriverStation = true;
+    public static boolean doMessageDriverStation = true;
     
     public void messageDriverStation(String message) {
     	if (doMessageDriverStation) {

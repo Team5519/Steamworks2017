@@ -19,7 +19,7 @@ public class DriveBaseAutonomous extends Subsystem {
 	protected RobotDrive myDrive;
 	
     // GyroSamples
-    private static final double kP = -0.03;
+    // private static final double kP = -0.03;
     AHRS ahrs;
     
     // CIMcoder am-3314a
@@ -30,7 +30,7 @@ public class DriveBaseAutonomous extends Subsystem {
     
     private boolean isGearFront;
     
-    public double pidRotateAngle(double angle)	{
+    private double louisePidRotateValue(double angle)	{
     	double pid = 0.0;
     	double absAngle = Math.abs(angle);
     	if(absAngle>= 25.0) {
@@ -55,6 +55,87 @@ public class DriveBaseAutonomous extends Subsystem {
     	return pid;
     }
     
+    private double arbourPidRotateValue(double angle)	{
+    	double pid = 0.0;
+    	double absAngle = Math.abs(angle);
+    	if(absAngle>= 25.0) {
+    		pid = 0.5;
+    	}else if(absAngle>= 15.0) {
+    		pid = 0.5;
+    	}else if(absAngle>= 10.0) {
+    		pid = 0.5;
+    	}else if(absAngle>=5.0)	{
+    		pid = 0.45;
+    	}else if(absAngle>=1.0)	{
+    		pid = 0.45;
+    	}else	{
+    		pid = absAngle * 0.45;
+    	}
+    	if(angle<=0.0)	{
+    		pid = pid * -1.0;
+    	}else {
+    		pid = pid * 1.2;
+    		
+    	}
+    	return pid;
+    }
+    
+   public double pidRotateValue(double angle)	{
+    	if (RobotMap.isLouise) {
+    		return louisePidRotateValue(angle);
+    	} else {
+    		return arbourPidRotateValue(angle);
+    	}
+    }
+
+   private double louisePidMoveValue(double speed)	{
+   		double pid = 0.0;
+   		double absSpeed = Math.abs(speed);
+   		if(absSpeed >= RobotMap.AUTO_HIGH_SPEED) {
+   			pid = speed;
+   		} else if(absSpeed >= RobotMap.AUTO_MEDIUM_SPEED) {
+   			pid = speed;  		
+   		} else if(absSpeed >= RobotMap.AUTO_SLOW_SPEED) {
+   			pid = speed;  		
+   		} else {
+   			pid = speed;  		
+   		}
+    	if(speed <= 0.0)	{
+    		pid = pid * -1.0;
+    	}else {
+    		pid = pid * 1.0;	
+    	}
+	   return pid;
+   }
+
+   private double arbourPidMoveValue(double speed)	{
+  		double pid = 0.0;
+  		double absSpeed = Math.abs(speed);
+  		if(absSpeed >= RobotMap.AUTO_HIGH_SPEED) {
+  			pid = speed;
+  		} else if(absSpeed >= RobotMap.AUTO_MEDIUM_SPEED) {
+  			pid = speed;  		
+  		} else if(absSpeed >= RobotMap.AUTO_SLOW_SPEED) {
+  			pid = speed;  		
+  		} else {
+  			pid = speed;  		
+  		}
+  		if(speed <= 0.0)	{
+  			pid = pid * -1.0;
+  		}else {
+  			pid = pid * 1.0;	
+  		}
+  		return pid;
+   }
+
+    public double pidMoveValue(double speed)	{
+    	if (RobotMap.isLouise) {
+    		return louisePidMoveValue(speed);
+    	} else {
+    		return arbourPidMoveValue(speed);
+    	}
+    }
+
     public DriveBaseAutonomous() {
     	isGearFront = true;
 		myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.frontRightMotor);
@@ -100,8 +181,7 @@ public class DriveBaseAutonomous extends Subsystem {
 	public void driveStraight(double moveValue) {
 		// GyroSamples
 		// double rotateValue = ahrs.getAngle()* kP;
-		double rotateValue = pidRotateAngle(ahrs.getAngle());
-		directDrive(moveValue, rotateValue);
+		directDrive(pidMoveValue(moveValue), pidRotateValue(ahrs.getAngle()));
 	}
 	
 	public void rotateInPlace(double targetAngle) {
@@ -114,7 +194,7 @@ public class DriveBaseAutonomous extends Subsystem {
     		Robot.oi.messageDriverStation("Rotate in place applying CORRECTION.");
     	}
     	 */
-    	 double rotateValue = pidRotateAngle(-1.0 * targetAngle);
+    	 double rotateValue = pidRotateValue(-1.0 * targetAngle);
 		//myDrive.drive(0.08, rotateValue);
 		//myDrive.drive(0.0, rotateValue);
 		myDrive.arcadeDrive(0.001, rotateValue, true);
@@ -126,8 +206,10 @@ public class DriveBaseAutonomous extends Subsystem {
 	 * Code stolen from RobotDrive
 	 */
 	public void drive(GenericHID stick) {
+		/*
 		SmartDashboard.putNumber(   "Joystick/Y-Axis Value",       stick.getY());
 		SmartDashboard.putNumber(   "Joystick/X-Axis Value",       stick.getX());
+		*/
  		double moveValue = 0.75 * stick.getY();
  		if(!isGearFront)	{
  			moveValue = -1 * moveValue;
@@ -143,13 +225,14 @@ public class DriveBaseAutonomous extends Subsystem {
 	 */
 	 public void directDrive(double moveValue, double targetAngle) {
 		//DriverStation.reportWarning("Drive Rotate Bot rotateAngle:  " + targetAngle, false);
+		/**
 	    double rotateValue = -0.200;
 	    if (targetAngle < 0.0) {
 	    	rotateValue = -1.3 * rotateValue;
 	        //DriverStation.reportWarning("Rotate in place applying CORRECTION.", false);
 	    }
-	    rotateValue = pidRotateAngle (targetAngle);
-	 	myDrive.arcadeDrive(moveValue, rotateValue);			 
+	   */
+	 	myDrive.arcadeDrive(pidMoveValue(moveValue), pidRotateValue (targetAngle));			 
 	 }
 	 
 	 public void stopDead() {
@@ -165,6 +248,9 @@ public class DriveBaseAutonomous extends Subsystem {
 
 	
     public void dumpSensorData () {
+    	if (!Robot.oi.doMessageDriverStation) {
+    		return;
+    	}
         /* Display 6-axis Processed Angle Data                                      */
         SmartDashboard.putBoolean(  "AHRS/IMU_Connected",        ahrs.isConnected());
         SmartDashboard.putBoolean(  "AHRS/IMU_IsCalibrating",    ahrs.isCalibrating());
