@@ -26,7 +26,7 @@ public class AutoLeftOne extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new AutoDriveStraightDistance(7.0));
+    	addSequential(new AutoDriveStraightDistance(1.75));
     	addSequential(new AutoAlignToPegTarget(RobotMap.START_POSITION_RIGHT));
     	// Second Align Call to correct overshoot.
     	addSequential(new AutoAlignToPegTarget(RobotMap.START_POSITION_RIGHT));

@@ -21,6 +21,7 @@ import org.usfirst.frc.team5519.robot.commands.AutoRightOne;
 import org.usfirst.frc.team5519.robot.subsystems.AxisVision;
 import org.usfirst.frc.team5519.robot.subsystems.Climber;
 import org.usfirst.frc.team5519.robot.subsystems.DriveBaseAutonomous;
+import org.usfirst.frc.team5519.robot.subsystems.GearRelease;
 import org.usfirst.frc.team5519.robot.subsystems.Intake;
 import org.usfirst.frc.team5519.robot.subsystems.Shooter;
 import org.usfirst.frc.team5519.robot.subsystems.ShooterCamera;
@@ -42,6 +43,7 @@ public class Robot extends IterativeRobot {
     public static DriveBaseAutonomous driveBase;
     public static AxisVision axisVision;
     public static ShooterCamera shooterCamera;
+    public static GearRelease gearRelease;
 
     Command autonomousCommand;
     
@@ -56,6 +58,7 @@ public class Robot extends IterativeRobot {
         shooter = new Shooter();
         intake = new Intake();
         climber = new Climber();
+        gearRelease = new GearRelease();
         
         axisVision = new AxisVision();
         axisVision.initCameraHardware();
@@ -99,12 +102,15 @@ public class Robot extends IterativeRobot {
         oi.messageDriverStation("AUTONOMOUS COMMAND = " + autoSelected);
 		switch(autoSelected) { 
 			case "Auto Left 1": 
+			case "L1":
 				autonomousCommand = new AutoLeftOne(RobotMap.START_POSITION_LEFT); 
 				break; 
 			case "Auto Right 1": 
+			case "R1":
 				autonomousCommand = new AutoRightOne(RobotMap.START_POSITION_RIGHT); 
 				break; 
 			case "Auto Centre 1": 
+			case "C1":
 				autonomousCommand = new AutoCenterOne(RobotMap.START_POSITION_CENTRE); 
 				break; 
 			case "Auto Align":
@@ -118,7 +124,7 @@ public class Robot extends IterativeRobot {
 				break;
 			case "Auto Default": 
 			default:
-				autonomousCommand = new AutoDriveStraightDistance(3.0); 
+				autonomousCommand = new AutoRightOne(RobotMap.START_POSITION_LEFT); 
 				break; 
 		}
 		if (autonomousCommand != null)

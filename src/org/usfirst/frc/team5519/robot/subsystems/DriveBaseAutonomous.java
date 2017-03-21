@@ -34,9 +34,9 @@ public class DriveBaseAutonomous extends Subsystem {
     	double pid = 0.0;
     	double absAngle = Math.abs(angle);
     	if(absAngle>= 25.0) {
-    		pid = 0.5;
+    		pid = 0.7;
     	}else if(absAngle>= 15.0) {
-    		pid = 0.5;
+    		pid = 0.6;
     	}else if(absAngle>= 10.0) {
     		pid = 0.5;
     	}else if(absAngle>=5.0)	{

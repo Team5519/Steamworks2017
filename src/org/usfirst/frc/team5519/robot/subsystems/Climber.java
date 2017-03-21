@@ -13,7 +13,7 @@ public class Climber extends Subsystem {
 	}
 
 	public void Climb()	{
-		RobotMap.climberMotor1.set(-0.75);
+		RobotMap.climberMotor1.set(-1.0);
 	}
 	
 	public void Stop()	{

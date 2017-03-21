@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5519.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PWMSpeedController;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
@@ -44,8 +45,8 @@ public class RobotMap {
 	public static int kShooterMotorPort4;
 	
 	public static int kIntakeMotorPort1;
-	
 	public static int kClimberMotorPort1;
+	public static int kGearReleaseMotorPort1;
 	
 	public static PWMSpeedController frontLeftMotor;
 	public static PWMSpeedController frontRightMotor;
@@ -56,11 +57,17 @@ public class RobotMap {
 	public static PWMSpeedController shooterMotor4;
 	
 	public static PWMSpeedController intakeMotor1;
-	
 	public static PWMSpeedController climberMotor1;
+	public static PWMSpeedController gearReleaseMotor1;
+	
+	public static DigitalInput gearReleaseTopLimitSwitch;
+	public static DigitalInput gearReleaseBottomLimitSwitch;
 	
 	public final static int kCIMcoderDioPortA = 0;
 	public final static int kCIMcoderDioPortB = 1;
+	
+	public final static int kGearReleaseTopLimitPort = 2;
+	public final static int kGearReleaseBottomLimitPort = 3;
 	
 	public static void init() {
 		if (isLouise) {
@@ -75,7 +82,6 @@ public class RobotMap {
 			kShooterMotorPort4 = 5;
 			
 			kIntakeMotorPort1 = 9;
-			
 			kClimberMotorPort1 = 8;
 			
 			frontLeftMotor = new VictorSP(kFrontLeftMotorPort);
@@ -87,7 +93,6 @@ public class RobotMap {
 			shooterMotor4 = new VictorSP(kShooterMotorPort4);
 			
 			intakeMotor1 = new VictorSP(kIntakeMotorPort1);
-			
 			climberMotor1 = new Spark(kClimberMotorPort1);
 		} else {
 			// Assign definitions for ARBOUR (Test Bot)
@@ -100,8 +105,8 @@ public class RobotMap {
 			kShooterMotorPort4 = 5;
 			
 			kIntakeMotorPort1 = 9;
-			
 			kClimberMotorPort1 = 8;
+			kGearReleaseMotorPort1 = 6;
 			
 			// Assuming all motors will be using Talons.
 			frontLeftMotor = new Victor(kFrontLeftMotorPort);
@@ -113,8 +118,8 @@ public class RobotMap {
 			shooterMotor4 = new Talon(kShooterMotorPort4);
 			
 			intakeMotor1 = new VictorSP(kIntakeMotorPort1);
-			
 			climberMotor1 = new Victor(kClimberMotorPort1);
+			gearReleaseMotor1 = new Victor(kGearReleaseMotorPort1);
 				
 		}
 

@@ -68,14 +68,14 @@ public class OI {
 	
 	public static final int kDeliverGearButtonNumber = 1;
 	public static Button deliverGearButton;
-	public static final int kAlignToGearButtonNumber = 11;
+	public static final int kAlignToGearButtonNumber = 3;
 	public static Button alignToGearButton;
-	public static final int kDriveToGearButtonNumber = 10;
+	public static final int kDriveToGearButtonNumber = 8;
 	public static Button driveToGearButton;
-	public static final int kDriveStraightGearButtonNumber = 7;
+	public static final int kDriveStraightGearButtonNumber = 9;
 	public static Button driveStraightGearButton;
 
-	public static final int kToggleDriveFrontButtonNumber = 3;
+	public static final int kToggleDriveFrontButtonNumber = 2;
 	public static Button toggleDriveFrontButton;
 	
 	public static Button toggleShootHighButton;
