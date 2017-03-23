@@ -59,11 +59,12 @@ public class Robot extends IterativeRobot {
         //intake = new Intake();
         climber = new Climber();
         gearRelease = new GearRelease();
+        gearRelease.initHardware();
         
         axisVision = new AxisVision();
         axisVision.initCameraHardware();
         shooterCamera = new ShooterCamera();
-        shooterCamera.initCameraHardware();
+        //shooterCamera.initCameraHardware();
         
         driveBase = new DriveBaseAutonomous();
         oi = new OI();

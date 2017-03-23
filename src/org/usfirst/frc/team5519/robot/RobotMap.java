@@ -19,7 +19,7 @@ public class RobotMap {
 	 * NOTE: 	Competition bot is LOUISE (Wifi Radio Config)
 	 * 			Practice bot is ARBOUR (Wifi Radio Config)
 	 */
-	public static boolean isLouise = false;		// BE SURE TO SET THIS TO FALSE IF RUNNING FARADAY!!!
+	public static boolean isLouise = true;		// BE SURE TO SET THIS TO FALSE IF RUNNING FARADAY!!!
 	
 	public final static int START_POSITION_RIGHT = 0;
 	public final static int START_POSITION_CENTRE = 1;
@@ -95,7 +95,10 @@ public class RobotMap {
 			
 			//intakeMotor1 = new VictorSP(kIntakeMotorPort1);
 			climberMotor1 = new Spark(kClimberMotorPort1);
-			gearReleaseMotor = new Victor(kGearReleaseMotorPort);
+			gearReleaseMotor = new VictorSP(kGearReleaseMotorPort);
+			
+			gearUpperLimitSwitchInput = new DigitalInput(kGearUpperLimitSwitchDioPort);
+			gearLowerLimitSwitchInput = new DigitalInput(kGearLowerLimitSwitchDioPort);
 			
 		} else {
 			// Assign definitions for ARBOUR (Test Bot)
@@ -122,7 +125,10 @@ public class RobotMap {
 			
 			//intakeMotor1 = new VictorSP(kIntakeMotorPort1);
 			climberMotor1 = new Victor(kClimberMotorPort1);
-			gearReleaseMotor = new Victor(kGearReleaseMotorPort);
+			gearReleaseMotor = new VictorSP(kGearReleaseMotorPort);
+			
+			gearUpperLimitSwitchInput = new DigitalInput(kGearUpperLimitSwitchDioPort);
+			gearLowerLimitSwitchInput = new DigitalInput(kGearLowerLimitSwitchDioPort);
 				
 		}
 

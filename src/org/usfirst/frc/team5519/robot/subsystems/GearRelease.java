@@ -37,21 +37,23 @@ public class GearRelease extends Subsystem {
 	
 	public boolean isLowerLimitHit() {
 		
-    	if (gearReleaseLowerLimitCounter != null) {
+		if (gearReleaseLowerLimitCounter != null) { 
+			//return true;     // never hit
     		return gearReleaseLowerLimitCounter.get() > 0;
     	} else {
     		return true;
-    	}
-
+    	}  
+		
     }
 	
 	public boolean isUpperLimitHit() {
-		
-    	if (gearReleaseUpperLimitCounter != null) {
-    		return gearReleaseUpperLimitCounter.get() > 0;
+		if (gearReleaseUpperLimitCounter != null) {
+			//return true;    // Never hit
+			return gearReleaseUpperLimitCounter.get() > 0;
     	} else {
     		return true;
     	}
+    	
 
     }
 	

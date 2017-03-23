@@ -63,7 +63,7 @@ public class OI {
 	// These are the buttons on the Joystick.
 	
 	// These are the buttons on the controller.
-	public static final int kToggleShootHighButtonNumber = 2;	// A
+	public static final int kToggleShootHighButtonNumber = 8;	// A
 	public static final int kToggleShootLowButtonNumber = 3;	// B
 
 	public static final int kToggleClimbButtonNumber = 1;		// X
@@ -71,7 +71,7 @@ public class OI {
 	public static final int kToggleIntakeButtonNumber = 4;		// Y
 	
 	public static final int kGearUpButtonNumber = 11;
-	public static final int kGearDownButtonNumber = 12;
+	public static final int kGearDownButtonNumber = 12;	
 
 	/*
 	public static final int kDeliverGearButtonNumber = 1;
@@ -109,7 +109,7 @@ public class OI {
 		OI.controller = new XboxController(kXboxControllerPort);
 		
 		Command ShootHigh = new ShootHigh();
-		OI.toggleShootHighButton = new JoystickButton(OI.controller, kToggleShootHighButtonNumber);
+		OI.toggleShootHighButton = new JoystickButton(OI.driveStick, kToggleShootHighButtonNumber);
 		OI.toggleShootHighButton.toggleWhenPressed(ShootHigh);
 		
 		Command ShootLow = new ShootLow();
@@ -117,7 +117,7 @@ public class OI {
 		OI.toggleShootLowButton.toggleWhenPressed(ShootLow);
 		
 		Command Climb = new Climb();
-		OI.toggleClimbButton = new JoystickButton(OI.controller, kToggleClimbButtonNumber);
+		OI.toggleClimbButton = new JoystickButton(OI.driveStick, kToggleClimbButtonNumber);
 		OI.toggleClimbButton.toggleWhenPressed(Climb);
 		
 		Command IntakeBalls = new IntakeBalls();
@@ -151,8 +151,8 @@ public class OI {
 		OI.toggleGearUpButton.toggleWhenPressed(gearUp);
 		
 		Command gearDown = new GearDown();
-		OI.toggleGearUpButton = new JoystickButton(OI.driveStick,kGearUpButtonNumber);
-		OI.toggleGearUpButton.toggleWhenPressed(gearUp);
+		OI.toggleGearDownButton = new JoystickButton(OI.driveStick,kGearDownButtonNumber);
+		OI.toggleGearDownButton.toggleWhenPressed(gearDown);
 	}
 	
 }
