@@ -12,6 +12,8 @@ import org.usfirst.frc.team5519.robot.commands.AutoDeliverGear;
 import org.usfirst.frc.team5519.robot.commands.AutoDriveStraightDistance;
 import org.usfirst.frc.team5519.robot.commands.AutoDriveToPegTarget;
 import org.usfirst.frc.team5519.robot.commands.Climb;
+import org.usfirst.frc.team5519.robot.commands.GearDown;
+import org.usfirst.frc.team5519.robot.commands.GearUp;
 import org.usfirst.frc.team5519.robot.commands.IntakeBalls;
 import org.usfirst.frc.team5519.robot.commands.ShootHigh;
 import org.usfirst.frc.team5519.robot.commands.ShootLow;
@@ -58,6 +60,8 @@ public class OI {
 	public static Joystick driveStick;
 	public static XboxController controller;
 	
+	// These are the buttons on the Joystick.
+	
 	// These are the buttons on the controller.
 	public static final int kToggleShootHighButtonNumber = 2;	// A
 	public static final int kToggleShootLowButtonNumber = 3;	// B
@@ -66,6 +70,10 @@ public class OI {
 	
 	public static final int kToggleIntakeButtonNumber = 4;		// Y
 	
+	public static final int kGearUpButtonNumber = 11;
+	public static final int kGearDownButtonNumber = 12;
+
+	/*
 	public static final int kDeliverGearButtonNumber = 1;
 	public static Button deliverGearButton;
 	public static final int kAlignToGearButtonNumber = 3;
@@ -74,14 +82,18 @@ public class OI {
 	public static Button driveToGearButton;
 	public static final int kDriveStraightGearButtonNumber = 9;
 	public static Button driveStraightGearButton;
+	*/
 
 	public static final int kToggleDriveFrontButtonNumber = 2;
 	public static Button toggleDriveFrontButton;
+	
 	
 	public static Button toggleShootHighButton;
 	public static Button toggleShootLowButton;
 	public static Button toggleClimbButton;
 	public static Button toggleIntakeButton;
+	public static Button toggleGearUpButton;
+	public static Button toggleGearDownButton;
 
     public static boolean doMessageDriverStation = true;
     
@@ -113,6 +125,7 @@ public class OI {
 		OI.toggleIntakeButton.toggleWhenPressed(IntakeBalls);
 		
 		// Auto buttons
+		/*
 		Command deliverGear = new AutoDeliverGear(RobotMap.START_POSITION_LEFT);
 		OI.deliverGearButton = new JoystickButton(OI.driveStick,kDeliverGearButtonNumber);
 		OI.deliverGearButton.toggleWhenPressed(deliverGear);
@@ -127,11 +140,19 @@ public class OI {
 
 		Command driveStraight = new AutoDriveStraightDistance(2.0);
 		OI.driveStraightGearButton = new JoystickButton(OI.driveStick,kDriveStraightGearButtonNumber);
-		OI.driveStraightGearButton.toggleWhenPressed(driveStraight);
+		OI.driveStraightGearButton.toggleWhenPressed(driveStraight);*/
 
 		Command toggleDriveFront = new ToggleFrontDrive();
 		OI.toggleDriveFrontButton = new JoystickButton(OI.driveStick,kToggleDriveFrontButtonNumber);
 		OI.toggleDriveFrontButton.whenPressed(toggleDriveFront);
+		
+		Command gearUp = new GearUp();
+		OI.toggleGearUpButton = new JoystickButton(OI.driveStick,kGearUpButtonNumber);
+		OI.toggleGearUpButton.toggleWhenPressed(gearUp);
+		
+		Command gearDown = new GearDown();
+		OI.toggleGearUpButton = new JoystickButton(OI.driveStick,kGearUpButtonNumber);
+		OI.toggleGearUpButton.toggleWhenPressed(gearUp);
 	}
 	
 }

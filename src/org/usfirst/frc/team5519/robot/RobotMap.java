@@ -44,9 +44,9 @@ public class RobotMap {
 	public static int kShooterMotorPort3;
 	public static int kShooterMotorPort4;
 	
-	public static int kIntakeMotorPort1;
+	//public static int kIntakeMotorPort1;
 	public static int kClimberMotorPort1;
-	public static int kGearReleaseMotorPort1;
+	public static int kGearReleaseMotorPort;
 	
 	public static PWMSpeedController frontLeftMotor;
 	public static PWMSpeedController frontRightMotor;
@@ -58,16 +58,16 @@ public class RobotMap {
 	
 	public static PWMSpeedController intakeMotor1;
 	public static PWMSpeedController climberMotor1;
-	public static PWMSpeedController gearReleaseMotor1;
+	public static PWMSpeedController gearReleaseMotor;
 	
-	public static DigitalInput gearReleaseTopLimitSwitch;
-	public static DigitalInput gearReleaseBottomLimitSwitch;
+	public static DigitalInput gearUpperLimitSwitchInput;
+	public static DigitalInput gearLowerLimitSwitchInput;
 	
 	public final static int kCIMcoderDioPortA = 0;
 	public final static int kCIMcoderDioPortB = 1;
 	
-	public final static int kGearReleaseTopLimitPort = 2;
-	public final static int kGearReleaseBottomLimitPort = 3;
+	public final static int kGearUpperLimitSwitchDioPort = 2;
+	public final static int kGearLowerLimitSwitchDioPort = 3;
 	
 	public static void init() {
 		if (isLouise) {
@@ -81,8 +81,9 @@ public class RobotMap {
 			kShooterMotorPort3 = 4;
 			kShooterMotorPort4 = 5;
 			
-			kIntakeMotorPort1 = 9;
+			//kIntakeMotorPort1 = 9;
 			kClimberMotorPort1 = 8;
+			kGearReleaseMotorPort = 9;
 			
 			frontLeftMotor = new VictorSP(kFrontLeftMotorPort);
 			frontRightMotor = new VictorSP(kFrontRightMotorPort);
@@ -92,8 +93,10 @@ public class RobotMap {
 			shooterMotor3 = new VictorSP(kShooterMotorPort3);
 			shooterMotor4 = new VictorSP(kShooterMotorPort4);
 			
-			intakeMotor1 = new VictorSP(kIntakeMotorPort1);
+			//intakeMotor1 = new VictorSP(kIntakeMotorPort1);
 			climberMotor1 = new Spark(kClimberMotorPort1);
+			gearReleaseMotor = new Victor(kGearReleaseMotorPort);
+			
 		} else {
 			// Assign definitions for ARBOUR (Test Bot)
 			kFrontLeftMotorPort = 0;		
@@ -104,9 +107,9 @@ public class RobotMap {
 			kShooterMotorPort3 = 4;
 			kShooterMotorPort4 = 5;
 			
-			kIntakeMotorPort1 = 9;
+			//kIntakeMotorPort1 = 9;
 			kClimberMotorPort1 = 8;
-			kGearReleaseMotorPort1 = 6;
+			kGearReleaseMotorPort = 9;
 			
 			// Assuming all motors will be using Talons.
 			frontLeftMotor = new Victor(kFrontLeftMotorPort);
@@ -117,9 +120,9 @@ public class RobotMap {
 			shooterMotor3 = new Talon(kShooterMotorPort3);
 			shooterMotor4 = new Talon(kShooterMotorPort4);
 			
-			intakeMotor1 = new VictorSP(kIntakeMotorPort1);
+			//intakeMotor1 = new VictorSP(kIntakeMotorPort1);
 			climberMotor1 = new Victor(kClimberMotorPort1);
-			gearReleaseMotor1 = new Victor(kGearReleaseMotorPort1);
+			gearReleaseMotor = new Victor(kGearReleaseMotorPort);
 				
 		}
 

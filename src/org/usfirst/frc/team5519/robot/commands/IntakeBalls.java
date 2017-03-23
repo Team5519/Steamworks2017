@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class IntakeBalls extends Command {
 	
 	public IntakeBalls() {
-		requires(Robot.intake);
+		//requires(Robot.intake);
 	}
 	
 	@Override
@@ -19,7 +19,7 @@ public class IntakeBalls extends Command {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.intake.IntakeBalls();
+		//Robot.intake.IntakeBalls();
 	}
 	
 	@Override
@@ -30,7 +30,7 @@ public class IntakeBalls extends Command {
 	
 	@Override
 	protected void end() {
-		Robot.intake.Stop();
+		//Robot.intake.Stop();
 	}
 
 	@Override

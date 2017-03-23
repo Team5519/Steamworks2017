@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
     public static Shooter shooter;
-    public static Intake intake;
+    //public static Intake intake;
     public static Climber climber;
     public static DriveBaseAutonomous driveBase;
     public static AxisVision axisVision;
@@ -56,7 +56,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.init ();
 		
         shooter = new Shooter();
-        intake = new Intake();
+        //intake = new Intake();
         climber = new Climber();
         gearRelease = new GearRelease();
         

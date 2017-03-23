@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GearRelease extends Subsystem {
 	
-	private Counter gearReleaseTopLimitSwitch;
-	private Counter gearReleaseBottomLimitSwitch;
+	private Counter gearReleaseUpperLimitCounter;
+	private Counter gearReleaseLowerLimitCounter;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -24,37 +24,67 @@ public class GearRelease extends Subsystem {
 			motor = RobotMap.armMotor;
 		}
 		*/
-    	if (gearReleaseBottomLimitSwitch == null) {
-    		gearReleaseBottomLimitSwitch = new Counter(RobotMap.gearReleaseBottomLimitSwitch);
+    	if (gearReleaseLowerLimitCounter == null) {
+    		gearReleaseLowerLimitCounter = new Counter(RobotMap.gearLowerLimitSwitchInput);
     	}
-    	if (gearReleaseTopLimitSwitch == null) {
-    		gearReleaseTopLimitSwitch = new Counter(RobotMap.gearReleaseTopLimitSwitch);
+    	if (gearReleaseUpperLimitCounter == null) {
+    		gearReleaseUpperLimitCounter = new Counter(RobotMap.gearUpperLimitSwitchInput);
     	}
-   	    gearReleaseBottomLimitSwitch.reset();
-    	gearReleaseTopLimitSwitch.reset();
+    	gearReleaseLowerLimitCounter.reset();
+   	    gearReleaseUpperLimitCounter.reset();
     	
 	}
-	public boolean isBottomLimitHit() {
+	
+	public boolean isLowerLimitHit() {
 		
-    	if (gearReleaseBottom != null) {
-    		return outerLimitCounter.get() > 0;
+    	if (gearReleaseLowerLimitCounter != null) {
+    		return gearReleaseLowerLimitCounter.get() > 0;
     	} else {
     		return true;
     	}
 
     }
+	
+	public boolean isUpperLimitHit() {
+		
+    	if (gearReleaseUpperLimitCounter != null) {
+    		return gearReleaseUpperLimitCounter.get() > 0;
+    	} else {
+    		return true;
+    	}
 
-    
-    public void releaseGear()	{
-    	RobotMap.gearReleaseMotor1.set(1.0);
+    }
+	
+    private void resetLowerLimit() {
+    	
+    	if (gearReleaseLowerLimitCounter == null) {
+    		gearReleaseLowerLimitCounter = new Counter(RobotMap.gearLowerLimitSwitchInput);
+    	}
+    	gearReleaseLowerLimitCounter.reset();
+   	   
     }
     
-    public void resetReleaseGear()	{
-    	RobotMap.gearReleaseMotor1.set(-1.0);
+    private void resetUpperLimit() {
+    	
+    	if (gearReleaseUpperLimitCounter == null) {
+    		gearReleaseUpperLimitCounter = new Counter(RobotMap.gearUpperLimitSwitchInput);
+    	}
+    	gearReleaseUpperLimitCounter.reset();
+   	   
+    }
+    
+    public void lowerGear()	{
+    	RobotMap.gearReleaseMotor.set(1.0);
+    	this.resetUpperLimit();
+    }
+    
+    public void raiseGear()	{
+    	RobotMap.gearReleaseMotor.set(-1.0);
+    	this.resetLowerLimit();
     }
     
     public void stop()	{
-    	RobotMap.gearReleaseMotor1.set(0.0);
+    	RobotMap.gearReleaseMotor.set(0.0);
     }
     
 }
