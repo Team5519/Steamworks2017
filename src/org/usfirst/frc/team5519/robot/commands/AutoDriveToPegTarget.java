@@ -26,7 +26,7 @@ public class AutoDriveToPegTarget extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveBase);
-    	requires(Robot.axisVision);
+    	requires(Robot.usbVision);
     }
 
     // Called just before this Command runs the first time
@@ -40,12 +40,12 @@ public class AutoDriveToPegTarget extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	moveValue = 0.0;
-    	if (Robot.axisVision.isTargetLocked()) {
+    	if (Robot.usbVision.isTargetLocked()) {
     		sanityCounter = 0;
     		moveValue = RobotMap.AUTO_HIGH_SPEED;
     		//rotateValue = Robot.axisVision.getTargetAngle() * kP;
-    		rotateAngle = Robot.axisVision.getTargetAngle();
-        	if (Robot.axisVision.getTargetDistance() < kCLOSE_TARGET_DISTANCE) {
+    		rotateAngle = Robot.usbVision.getTargetAngle();
+        	if (Robot.usbVision.getTargetDistance() < kCLOSE_TARGET_DISTANCE) {
         		// Slow down for last 1.0 meters
         		moveValue = RobotMap.AUTO_SLOW_SPEED;
         	}
@@ -62,7 +62,7 @@ public class AutoDriveToPegTarget extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.axisVision.getTargetDistance() < kMIN_TARGET_DISTANCE) {
+    	if (Robot.usbVision.getTargetDistance() < kMIN_TARGET_DISTANCE) {
     		// We are Within 0.5 meters which is close enough for finer adjustments to take over
             DriverStation.reportWarning("COMMAND DriveToPegTarget is POSITIONED CLOSE to target.", false);
     		return true;

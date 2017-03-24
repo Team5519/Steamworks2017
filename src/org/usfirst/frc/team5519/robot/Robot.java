@@ -18,7 +18,7 @@ import org.usfirst.frc.team5519.robot.commands.AutoDriveStraightDistance;
 import org.usfirst.frc.team5519.robot.commands.AutoDriveToPegTarget;
 import org.usfirst.frc.team5519.robot.commands.AutoLeftOne;
 import org.usfirst.frc.team5519.robot.commands.AutoRightOne;
-import org.usfirst.frc.team5519.robot.subsystems.AxisVision;
+import org.usfirst.frc.team5519.robot.subsystems.UsbVision;
 import org.usfirst.frc.team5519.robot.subsystems.Climber;
 import org.usfirst.frc.team5519.robot.subsystems.DriveBaseAutonomous;
 import org.usfirst.frc.team5519.robot.subsystems.GearRelease;
@@ -41,8 +41,8 @@ public class Robot extends IterativeRobot {
     //public static Intake intake;
     public static Climber climber;
     public static DriveBaseAutonomous driveBase;
-    public static AxisVision axisVision;
-    public static ShooterCamera shooterCamera;
+    public static UsbVision usbVision;
+    //public static ShooterCamera shooterCamera;
     public static GearRelease gearRelease;
 
     Command autonomousCommand;
@@ -61,9 +61,9 @@ public class Robot extends IterativeRobot {
         gearRelease = new GearRelease();
         gearRelease.initHardware();
         
-        axisVision = new AxisVision();
-        axisVision.initCameraHardware();
-        shooterCamera = new ShooterCamera();
+        usbVision = new UsbVision();
+        usbVision.initCameraHardware();
+        //shooterCamera = new ShooterCamera();
         //shooterCamera.initCameraHardware();
         
         driveBase = new DriveBaseAutonomous();

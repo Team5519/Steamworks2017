@@ -13,7 +13,7 @@ public class AlignBot extends Command {
     public AlignBot() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-		requires(Robot.axisVision);
+		requires(Robot.usbVision);
 
     }
 
@@ -23,7 +23,7 @@ public class AlignBot extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveBase.rotateInPlace(Robot.axisVision.getTargetAngle());
+    	Robot.driveBase.rotateInPlace(Robot.usbVision.getTargetAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,7 +31,7 @@ public class AlignBot extends Command {
     	//if (Math.abs(Robot.axisVision.getTargetDistance()) > 0.5) {
     	//	return false;
     	//}
-    	if (Math.abs(Robot.axisVision.getTargetAngle()) > 1.0) {
+    	if (Math.abs(Robot.usbVision.getTargetAngle()) > 1.0) {
     		return false;
     	}
     	Robot.oi.messageDriverStation("Align Bot is Positioned.");

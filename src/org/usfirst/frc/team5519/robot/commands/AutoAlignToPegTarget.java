@@ -17,7 +17,7 @@ public class AutoAlignToPegTarget extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveBase);
-    	requires(Robot.axisVision);
+    	requires(Robot.usbVision);
     	sideTargetToBot = side;
     }
 
@@ -29,9 +29,9 @@ public class AutoAlignToPegTarget extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double angleToTarget = 0.0;
-    	if (Robot.axisVision.isTargetLocked()) {
+    	if (Robot.usbVision.isTargetLocked()) {
     		// Target is in vision so we just need to do some fine adjustment to the angle.
-    		angleToTarget = Robot.axisVision.getTargetAngle();
+    		angleToTarget = Robot.usbVision.getTargetAngle();
     	} else {
     		// Target is not in vision so we have to rotate a bit in order to bring the target into view
     		// Direction of rotation depends on what side of the target (we think) we are on.
@@ -49,7 +49,7 @@ public class AutoAlignToPegTarget extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Math.abs(Robot.axisVision.getTargetAngle()) < 1.0) {
+    	if (Math.abs(Robot.usbVision.getTargetAngle()) < 1.0) {
     		// We are Within 1 degree which is good enough alignment for FRC work
     		Robot.oi.messageDriverStation("COMMAND AlignToPegTarget is ALIGNED to target.");
     		return true;

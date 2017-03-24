@@ -68,7 +68,7 @@ public class OI {
 
 	public static final int kToggleClimbButtonNumber = 1;		// X
 	
-	public static final int kToggleIntakeButtonNumber = 4;		// Y
+	//public static final int kToggleIntakeButtonNumber = 4;		// Y
 	
 	public static final int kGearUpButtonNumber = 11;
 	public static final int kGearDownButtonNumber = 12;	
@@ -91,7 +91,7 @@ public class OI {
 	public static Button toggleShootHighButton;
 	public static Button toggleShootLowButton;
 	public static Button toggleClimbButton;
-	public static Button toggleIntakeButton;
+	//public static Button toggleIntakeButton;
 	public static Button toggleGearUpButton;
 	public static Button toggleGearDownButton;
 
@@ -120,9 +120,9 @@ public class OI {
 		OI.toggleClimbButton = new JoystickButton(OI.driveStick, kToggleClimbButtonNumber);
 		OI.toggleClimbButton.toggleWhenPressed(Climb);
 		
-		Command IntakeBalls = new IntakeBalls();
-		OI.toggleIntakeButton = new JoystickButton(OI.controller, kToggleIntakeButtonNumber);
-		OI.toggleIntakeButton.toggleWhenPressed(IntakeBalls);
+		//Command IntakeBalls = new IntakeBalls();
+		//OI.toggleIntakeButton = new JoystickButton(OI.controller, kToggleIntakeButtonNumber);
+		//OI.toggleIntakeButton.toggleWhenPressed(IntakeBalls);
 		
 		// Auto buttons
 		/*

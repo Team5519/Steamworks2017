@@ -40,9 +40,9 @@ package org.usfirst.frc.team5519.robot.vision;
 		public void process(Mat source0) {
 			// Step HSL_Threshold0:
 			Mat hslThresholdInput = source0;
-			double[] hslThresholdHue = {59.89208633093525, 92.45733788395904};
-			double[] hslThresholdSaturation = {190.33273381294964, 255.0};
-			double[] hslThresholdLuminance = {29.81115107913669, 122.27815699658704};
+			double[] hslThresholdHue = {52.0, 89.0};
+			double[] hslThresholdSaturation = {14.0, 255.0};
+			double[] hslThresholdLuminance = {21.0, 240.0};
 			hslThreshold(hslThresholdInput, hslThresholdHue, hslThresholdSaturation, hslThresholdLuminance, hslThresholdOutput);
 
 			// Step Find_Contours0:
